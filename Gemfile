@@ -40,3 +40,8 @@ end
 
 # Windows ではタイムゾーン情報用の tzinfo-data gem を含める必要があります
 # gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem "dockerfile-rails", ">= 1.5", :group => :development
+
+gem "sentry-ruby", "~> 5.10"
+
+gem "sentry-rails", "~> 5.10"
