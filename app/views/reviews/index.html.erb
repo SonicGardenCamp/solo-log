@@ -1,0 +1,6 @@
+- レビュー一覧
+<% @reviews.each do |review|%>
+  <%= review.rate %>
+<% end %>
+
+<h1><%= @reviews.count %></h1>

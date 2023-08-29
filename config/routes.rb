@@ -5,5 +5,5 @@ Rails.application.routes.draw do
     passwords: "users/passwords",
     confirmations: "users/confirmations"
   }
-  resources :reviews,          only: [:new, :create]
+  resources :reviews,          only: [:index, :new, :create]
 end
