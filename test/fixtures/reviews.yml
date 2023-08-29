@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shop: one
+  rate: 1
+  comment: MyText
+  exist_counter_sheets?: false
+  frequent_solo_visitors: 1
+  exist_solo_tables?: false
+  easy_to_order: 1
+  delivery_speed: 1
+  calmness: 1
+
+two:
+  shop: two
+  rate: 1
+  comment: MyText
+  exist_counter_sheets?: false
+  frequent_solo_visitors: 1
+  exist_solo_tables?: false
+  easy_to_order: 1
+  delivery_speed: 1
+  calmness: 1
