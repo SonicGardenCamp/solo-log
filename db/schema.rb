@@ -10,9 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_29_014843) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_30_061717) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "reviews", force: :cascade do |t|
-    t.integer "shop_id", null: false
+    t.bigint "shop_id"
     t.integer "rate"
     t.text "comment"
     t.boolean "exist_counter_sheets?"
