@@ -1,6 +1,6 @@
 class Review < ApplicationRecord
   belongs_to :shop
-  
+  mount_uploader :image, ImageUploader
   validates :rate, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 5 }
   validates :comment, length: { maximum: 140 }
   validates :exist_counter_sheets?, inclusion: { in: [true, false] }
