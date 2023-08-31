@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-git_source(:github) { |repo| "https://github.com/＃{repo}.git" }
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem "rails",           "7.0.4"
 gem 'bootstrap', '~> 5.0.2'
@@ -44,5 +44,3 @@ gem "dockerfile-rails", ">= 1.5", :group => :development
 gem "sentry-ruby", "~> 5.10"
 
 gem "sentry-rails", "~> 5.10"
-
-gem "pg", "1.3.5"
