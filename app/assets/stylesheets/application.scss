@@ -1,1 +1,11 @@
 @import "bootstrap";
+
+select[readonly] {
+ pointer-events: none;
+}
+input[type="radio"][readonly] {
+ pointer-events: none;
+}
+input[type="checkbox"][readonly] {
+ pointer-events: none;
+}
