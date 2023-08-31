@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-<h1>Shops#index</h1>
-
-=======
 <%= stylesheet_link_tag 'index' %>
 
 <h1>All shops</h1>
@@ -11,7 +7,7 @@
     <% @shops.each_with_index do |shop, index| %>
       <div class="col-md-3 mb-4">
         <div class="card" style="width: 16rem; height: 20rem">
-           <a href="#" class="card-body text-dark">
+          <%= link_to shop_path(shop) , class:"card-body text-dark" do %>
             <!-- 仮の画像を表示 -->
             <% if index % 3 == 0 %>
               <img src="https://rocketnews24.com/wp-content/uploads/sites/2/2020/04/hsawayaka1.jpg?resize=1536,1279" class="card-img-top" alt="<%= shop.name %>" height="200">
@@ -25,7 +21,7 @@
               <h5 class="card-title"><%= shop.name %></h5>
               <p class="card-text"><%= shop.address %></p>
             </div>
-          </a>
+          <% end %>
         </div>
       </div>
       <% if (index + 1) % 4 == 0 %>
@@ -35,4 +31,3 @@
     <% end %>
   </div>
 </div>
->>>>>>> fa662a7c3314fcfadad36eb52419e6e2df0e3d8c
