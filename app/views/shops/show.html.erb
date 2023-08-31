@@ -1,59 +1,42 @@
-<% provide(:title, 'ソロログ') %>
-<h1>カレー専門店　華麗屋</h1>
-<h2>〒123-4567</h2>
-<h2>東京都新宿区1-2-3</h2>
+<% provide(:title, @shop.name) %>
+<h1>
+  <%= "店名：" + @shop.name %>
+</h1>
 
 
+<h2>
+  <%= "住所：" + @shop.address %>
+</h2>
 
-<body>
-  
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-  <div class="col">
-    <div class="card h-100">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">aaa</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">bbb</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">ccc</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">ddd</p>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card h-100">
-      <img src="..." class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">eee</p>
-      </div>
-    </div>
-  </div>
+<h3>
+</h3>
+
+<div class="col-md-8">
+      <h3>reviews (<%= @reviews.count %>)</h3>
+      <ol class="microposts">
+
+      </ol>
 </div>
 
-</body>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card">
+      <div class="card-body text-center">
+        <%= link_to "投稿する", new_review_path , class:"btn btn-primary rounded-pill"%>
 
+        <!--<button type="button" class="btn btn-primary rounded-pill">投稿する</button>-->
+      </div>
+    </div>
+  </div>
+  <% @reviews.each do |review| %>
+    <div class="col">
+      <div class="card">
+        <img src="https://user0514.cdnw.net/shared/img/thumb/nichinanIMGL0073_TP_V.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">BB</h5>
+          <p class="card-text">bbb</p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

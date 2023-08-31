@@ -1,0 +1,29 @@
+<% provide(:title, 'ソロログ') %>
+<h1>レビュー</h1>
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <%= form_with(model: @review) do |f| %>
+    <div>
+      <%= f.label :このお店に星をつける %>
+      <%= f.text_field :star %>
+    </div>
+    
+  
+    <div>
+      <%= f.label :写真を投稿する %>
+      <%= f.text_field :img %>
+    </div>    
+
+    <div>
+      <%= f.label :感想を書く %>
+      <%= f.text_field :comment %>
+    </div>    
+
+    <div>
+      <%= f.label :お店の情報 %>
+      <%= f.password_field :comment %>
+    </div>
+    <% end %>
+  </div>
+</div>
