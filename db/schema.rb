@@ -41,7 +41,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_31_065529) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
-    t.float "rate"
+    t.float "rate", default: 0.0
   end
 
   create_table "users", force: :cascade do |t|
