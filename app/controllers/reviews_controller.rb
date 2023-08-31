@@ -5,6 +5,8 @@ class ReviewsController < ApplicationController
   
   def create
     @review = Review.new(review_params)
+    # もしcurrent_userがいなければ、review.userはnil
+    @review.user = current_user
     if @review.save
       redirect_to @review.shop
     else
