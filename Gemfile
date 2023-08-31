@@ -1,5 +1,5 @@
 source "https://rubygems.org"
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+git_source(:github) { |repo| "https://github.com/＃{repo}.git" }
 
 gem "rails",           "7.0.4"
 # gem "bootstrap-sass",  "3.4.1"
@@ -37,10 +37,6 @@ group :test do
   gem "guard-minitest",           "2.4.6"
 end
 
-group :production do
-  gem "pg", "1.3.5"
-end
-
 # Windows ではタイムゾーン情報用の tzinfo-data gem を含める必要があります
 # gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "dockerfile-rails", ">= 1.5", :group => :development
@@ -48,3 +44,5 @@ gem "dockerfile-rails", ">= 1.5", :group => :development
 gem "sentry-ruby", "~> 5.10"
 
 gem "sentry-rails", "~> 5.10"
+
+gem "pg", "1.3.5"
