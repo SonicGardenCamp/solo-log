@@ -1,0 +1,15 @@
+h1 {
+    font-size : 70px; 
+}
+
+.container{
+    margin-top: 70px;
+}
+
+.card-title{
+    font-size: 15px
+}
+
+.card-text{
+    font-size: 12px
+}

@@ -1,2 +1,33 @@
-<h1>Shops#index</h1>
-<p>Find me in app/views/shops/index.html.erb</p>
+<%= stylesheet_link_tag 'index' %>
+
+<h1>All shops</h1>
+
+<div class="container">
+  <div class="row row-eq-height" >
+    <% @shops.each_with_index do |shop, index| %>
+      <div class="col-md-3 mb-4">
+        <div class="card" style="width: 16rem; height: 20rem">
+           <a href="#" class="card-body text-dark">
+            <!-- 仮の画像を表示 -->
+            <% if index % 3 == 0 %>
+              <img src="https://rocketnews24.com/wp-content/uploads/sites/2/2020/04/hsawayaka1.jpg?resize=1536,1279" class="card-img-top" alt="<%= shop.name %>" height="200">
+            <% elsif index % 3 == 1 %>
+              <img src="https://www.inapymes.com/wp-content/uploads/2023/03/20220812-hikakin-99.jpg" class="card-img-top" alt="<%= shop.name %>" height="200">
+            <% else %>
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPDEdijzxxcbuaN2tc6--TK0w3ms2ASw5hYA&usqp=CAU" class="card-img-top" alt="<%= shop.name %>" height="200">
+            <% end %>
+            <!-- ↑仮の画像を表示 -->
+            <div class="card-body">
+              <h5 class="card-title"><%= shop.name %></h5>
+              <p class="card-text"><%= shop.address %></p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <% if (index + 1) % 4 == 0 %>
+        </div>
+        <div class="row">
+      <% end %>
+    <% end %>
+  </div>
+</div>
