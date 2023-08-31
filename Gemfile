@@ -16,6 +16,8 @@ gem "bootsnap",        "1.12.0", require: false
 gem "devise"
 gem 'carrierwave'
 gem 'rails-i18n', '~> 7.0.0'
+gem 'devise-i18n'
+gem 'devise-i18n-views'
 gem "pg", "1.3.5"
 
 group :development, :test do

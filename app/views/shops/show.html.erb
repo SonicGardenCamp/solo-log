@@ -1,2 +1,44 @@
-<h1>Shops#show</h1>
-<p>Find me in app/views/shops/show.html.erb</p>
+<% provide(:title, @shop.name) %>
+<h1>
+  <%= "店名：" + @shop.name %>
+</h1>
+
+
+<h2>
+  <%= "住所：" + @shop.address %>
+</h2>
+
+<h3>
+</h3>
+
+<div class="col-md-8">
+      <h3>reviews (<%= @reviews.count %>)</h3>
+      <ol class="microposts">
+
+      </ol>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card h-100">
+      <div class="card-body text-center">
+        <%= link_to "投稿する", new_review_path , class:"btn btn-primary rounded-pill"%>
+
+        <!--<button type="button" class="btn btn-primary rounded-pill">投稿する</button>-->
+      </div>
+    </div>
+  </div>
+  <% @reviews.each do |review| %>
+    <div class="col">
+      <div class="card h-100">
+        <a href="<%= review_path(review) %>">
+          <img src="https://user0514.cdnw.net/shared/img/thumb/nichinanIMGL0073_TP_V.jpg" class="card-img-top" alt="...">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title">評価：<%= review.rate %></h5>
+          <p class="card-text">コメント：<%= review.comment %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
