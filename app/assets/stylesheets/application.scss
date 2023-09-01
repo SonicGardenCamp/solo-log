@@ -10,6 +10,14 @@ input[type="checkbox"][readonly] {
  pointer-events: none;
 }
 
+/* 全体 */
+
+body {
+ display: flex;
+ flex-direction: column;
+ min-height: 100vh;
+}
+
 /* flash */
 .validation-error-list {
  list-style-position: inside;
@@ -17,8 +25,7 @@ input[type="checkbox"][readonly] {
 
 /*フッター*/
 footer {
-  height: 50px;
-  width: 100%;
+ margin-top: auto;
 }
 
 .footer {
