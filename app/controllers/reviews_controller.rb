@@ -4,8 +4,20 @@ class ReviewsController < ApplicationController
     @review = Review.new
   end
 
+　#GPTのコード
+  # def create
+  #   @shop = Shop.find(params[:shop_id])
+  #   @review = @shop.reviews.build(review_params)
+  #   @review.user = current_user
+  #   if @review.save
+  #     redirect_to @review.shop
+  #   else
+  #     render 'new'
+  #   end
+  # end
+
+　#元のコード
   def create
-    @shop = 
     @review = Review.new(review_params)
     # もしcurrent_userがいなければ、review.userはnil
     # @review.user = current_user
