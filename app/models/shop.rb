@@ -7,4 +7,10 @@ class Shop < ApplicationRecord
   validates :longitude, presence: true, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }
   #後で変更する
   validates :genre, length: { maximum: 50 }
+
+  scope :sort_by_highest_rate, -> { group(:review_id).count }
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["name"]
+  end
 end
