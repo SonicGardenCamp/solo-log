@@ -9,3 +9,53 @@ input[type="radio"][readonly] {
 input[type="checkbox"][readonly] {
  pointer-events: none;
 }
+
+/* 全体 */
+body {
+ display: flex;
+ flex-direction: column;
+ min-height: 100vh;
+}
+
+.field_with_errors {
+  display: contents;
+  input, textarea {
+   @extend .is-invalid;
+  }
+}
+
+/* flash */
+.validation-error-list {
+ list-style-position: inside;
+ margin-top: 30px;
+}
+
+/*フッター*/
+footer {
+ margin-top: auto;
+}
+
+.footer {
+  height: 50px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer p {
+  font-size: 15px;
+  margin: 0;
+}
+
+/* ユーザー新規登録ページ */
+.signup-form {
+ margin-top: 40px;
+ padding-bottom: 40px;
+}
+
+/* ユーザーログインページ */
+.login-form {
+ padding-top: 40px;
+ padding-bottom: 40px;
+}

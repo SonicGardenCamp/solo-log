@@ -19,6 +19,7 @@ gem 'rails-i18n', '~> 7.0.0'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem "pg", "1.3.5"
+gem 'ransack'
 
 group :development, :test do
   gem "debug",   "1.5.0", platforms: %i[ mri mingw x64_mingw ]
