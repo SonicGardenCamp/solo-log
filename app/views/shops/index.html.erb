@@ -8,6 +8,11 @@
   <%= f.search_field :name_cont %>
   <%= f.submit '検索' %>
 <% end %>
+<%#= form_with model: @q, url: shops_path, method: :get do |f| %>
+  <%#= f.label :name, 'お店の名前' %>
+  <%#= f.search_field :name_cont %>
+  <%#= f.submit '検索' %>
+<%# end %>
 <div class="container">
   <div class="row row-eq-height" >
     <% @shops.each_with_index do |shop, index| %>
