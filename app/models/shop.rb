@@ -13,4 +13,8 @@ class Shop < ApplicationRecord
   def self.ransackable_attributes(auth_object = nil)
     ["name"]
   end
+
+  def self.sort_by_count_of_reviews
+    Review.group(:shop_id).includes(:shop).select(:shop_id, 'count(*) as c').order(c: :desc).map{|review| review.shop}
+  end
 end
