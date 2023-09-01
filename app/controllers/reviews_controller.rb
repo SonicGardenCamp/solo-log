@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    @shop = 
     @review = Review.new(review_params)
     # もしcurrent_userがいなければ、review.userはnil
     # @review.user = current_user
