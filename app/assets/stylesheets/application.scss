@@ -10,6 +10,11 @@ input[type="checkbox"][readonly] {
  pointer-events: none;
 }
 
+/* flash */
+.validation-error-list {
+ list-style-position: inside;
+}
+
 /*フッター*/
 footer {
   height: 50px;
