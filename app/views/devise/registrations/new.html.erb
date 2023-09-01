@@ -1,6 +1,7 @@
-<div class="row">
+<div class="signup-form">
+  <div class="row">
   <div class="col-md-6 offset-md-3">
-    <h2 class ="text-center">新規登録</h2>
+    <h2 class ="sign-up-title text-center">新規登録</h2>
   
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <% if resource.errors.full_messages.present? %>
@@ -31,11 +32,11 @@
         <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "パスワード(確認用)", autocomplete: "new-password" %>
       </div>
     
-      <div class="actions">
-        <%= f.submit "Sign up", class: 'btn btn-warning btn-block' %>
+      <div class="actions d-grid gap-3">
+        <%= f.submit "新規登録", class: "btn btn-warning btn-block" %>
+        <%= link_to "ログインボタンへ", new_user_session_path, class: "btn btn-warning btn-block" %>
       </div>
     <% end %>
-    
-    <%= render "devise/shared/links" %>
   </div>
+</div>
 </div>
