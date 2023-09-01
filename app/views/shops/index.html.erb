@@ -7,11 +7,7 @@
     <% @shops.each_with_index do |shop, index| %>
       <div class="col-md-3 mb-4">
         <div class="card" style="width: 16rem; height: 20rem">
-<<<<<<< HEAD
-           <a href="<%= shop_path(shop) %>" class="card-body text-dark">
-=======
           <%= link_to shop_path(shop) , class:"card-body text-dark" do %>
->>>>>>> c7687e24eb563c0472999247acc8738ed91fb8e7
             <!-- 仮の画像を表示 -->
             <% if index % 3 == 0 %>
               <img src="https://rocketnews24.com/wp-content/uploads/sites/2/2020/04/hsawayaka1.jpg?resize=1536,1279" class="card-img-top" alt="<%= shop.name %>" height="200">

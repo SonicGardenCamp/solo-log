@@ -1,3 +1,7 @@
+<% if user_signed_in?%>
+<% end %>
+
+
 <h1><%= @review.shop.name %></h1>
 <p>Rate: <%= @review.rate%></p>
 <p>住所: <%= @review.shop.address %></p>
@@ -129,4 +133,3 @@
   <label class="form-check-label" for="inlineRadio5">5</label>
 </div>
 <br><br>
-

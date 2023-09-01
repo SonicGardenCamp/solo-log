@@ -17,7 +17,6 @@ end
   shop.save!
 end
 
-
 Shop.all.each do |shop|
   10.times do
     shop.reviews.build(rate: rand(1..5), comment: Faker::Lorem.paragraph(sentence_count: 4),

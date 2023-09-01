@@ -1,0 +1,6 @@
+<%= turbo_stream.replace "follow_form" do %>
+  <%= button_to 'フォロー中', relationship_path(@user), method: :delete, id: 'follow_form', class: 'btn btn-secondary' %>
+<% end %>
+<%= turbo_stream.update "followers" do %>
+  <%= @user.followers.count %>
+<% end %>
