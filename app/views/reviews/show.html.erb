@@ -24,11 +24,11 @@
 
 <p>カウンター席があるか</p>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="counterSeets" id="inlineRadio1" value="option1" <%= @review.exist_counter_sheets? ? "checked" : ""%> readonly>
+  <input class="form-check-input" type="radio" name="counterSeets" id="inlineRadio1" value="option1" <%= @review.counter_sheets_available ? "checked" : ""%> readonly>
   <label class="form-check-label" for="inlineRadio1">はい</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="counterSeets" id="inlineRadio2" value="option2" <%= @review.exist_counter_sheets? ? "" : "checked"%> readonly>
+  <input class="form-check-input" type="radio" name="counterSeets" id="inlineRadio2" value="option2" <%= @review.counter_sheets_available ? "" : "checked"%> readonly>
   <label class="form-check-label" for="inlineRadio2">いいえ</label>
 </div>　
 <br><br>
@@ -36,11 +36,11 @@
 
 <p>一人席があるか</p>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="solopTables" id="inlineRadio1" value="option1" <%= @review.exist_solo_tables? ? "checked" : "" %> readonly>
+  <input class="form-check-input" type="radio" name="solopTables" id="inlineRadio1" value="option1" <%= @review.solo_tables_available ? "checked" : "" %> readonly>
   <label class="form-check-label" for="inlineRadio3">はい</label>
 </div>
 <div class="form-check form-check-inline">
-  <input class="form-check-input" type="radio" name="soloTables" id="inlineRadio2" value="option2" <%= @review.exist_solo_tables? ? "" : "checked" %> readonly>
+  <input class="form-check-input" type="radio" name="soloTables" id="inlineRadio2" value="option2" <%= @review.solo_tables_available ? "" : "checked" %> readonly>
   <label class="form-check-label" for="inlineRadio4">いいえ</label>
 </div>
 <br><br>
