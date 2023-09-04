@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/show'
   root "shops#index"
   devise_for :users, controllers: {
     registrations: "users/registrations",

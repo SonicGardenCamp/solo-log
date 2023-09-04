@@ -1,5 +1,5 @@
 <%= form_with(url: relationships_path, remote: true) do |form| %>
-  <%= form.hidden_field :followed_id, value: @user.id %>
+  <%= form.hidden_field :followed_id, value: @review.user.id %>
   <%= form.hidden_field :review_id, value: @review.id %> 
   <%= form.submit "Follow" %>
 <% end %>
