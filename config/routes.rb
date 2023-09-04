@@ -6,7 +6,15 @@ Rails.application.routes.draw do
     passwords: "users/passwords",
     confirmations: "users/confirmations"
   }
+  
   resources :shops,          only: [:index, :show] do
     resources :reviews,        only: [:index, :new, :create, :show], shallow: true
   end
+  
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships,       only: [:create, :destroy]
 end

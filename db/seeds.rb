@@ -8,6 +8,21 @@ def give_review
   rand(1..5)
 end
 
+users = []
+10.times do
+  users << User.create!(
+    email: Faker::Internet.email,
+    password: Faker::Internet.password(min_length: 8),
+    confirmed_at: Time.now
+  )
+end
+10.times do
+  users << User.create!(
+    email: Faker::Internet.email,
+    password: Faker::Internet.password(min_length: 8)
+  )
+end
+
 20.times do
   shop = Shop.new(latitude: Faker::Address.latitude.ceil(6),
                   longitude: Faker::Address.longitude.ceil(6),
@@ -16,7 +31,6 @@ end
                   genre: Faker::Food.ethnic_category)
   shop.save!
 end
-
 
 Shop.all.each do |shop|
   10.times do

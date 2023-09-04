@@ -7,8 +7,7 @@ class ReviewsController < ApplicationController
   
   def create
     @review = Review.new(review_params)
-    # もしcurrent_userがいなければ、review.userはnil
-    @review.user = current_user
+    @review.user = current_user if user_signed_in?
     if @review.save
       flash[:notice] = "作成できました"
       redirect_to @review.shop
@@ -20,6 +19,7 @@ class ReviewsController < ApplicationController
   
   def show
     @review = Review.find(params[:id])
+    @user = current_user if user_signed_in?
   end
   
   #def destroy
