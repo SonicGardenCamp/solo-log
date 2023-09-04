@@ -1,29 +1,107 @@
-<% provide(:title, 'ソロログ') %>
-<h1>レビュー</h1>
+<div class="col-md-8 mx-auto" >
+  <h1>レビューを作成する</h1>
+</div>
+<br><br>
 
-<div class="row">
-  <div class="col-md-6 offset-md-3">
-    <%= form_with(model: @review) do |f| %>
-    <div>
-      <%= f.label :このお店に星をつける %>
-      <%= f.text_field :star %>
-    </div>
-    
+<div class="col-md-6 offset-md-3">
+  <%= form_with(model: @review,  method: :post, url: shop_reviews_url(@review.shop)) do |f| %>
+    <%= render 'layouts/validation_errors', model: @review %>
   
-    <div>
-      <%= f.label :写真を投稿する %>
-      <%= f.text_field :img %>
-    </div>    
-
-    <div>
-      <%= f.label :感想を書く %>
-      <%= f.text_field :comment %>
-    </div>    
-
-    <div>
-      <%= f.label :お店の情報 %>
-      <%= f.password_field :comment %>
+    <div class="form-group">
+      <%= f.label :rate, "このお店に星をつける" %>
+      <br><br>
+      <% 5.times do |i| %>
+        <%= f.radio_button :rate, i + 1 %>
+        <%= f.label :rate, value: i + 1 %>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <% end %>
     </div>
-    <% end %>
-  </div>
+    <br><br>
+    
+
+    <div class="form-group">
+      <%= f.label :image, "写真を投稿する" %>
+      <br><br>
+      <%= f.file_field :image, class: "form-control" %>
+    </div>
+    <br><br>
+    
+
+    <div class="form-group">
+      <%= f.label :comment, "感想を書く" %>
+      <br><br>
+      <%= f.text_area :comment, class: "form-control" %>
+    </div>
+    <br><br>
+    
+    
+    <div class="form-group">
+      <%= f.label :exist_counter_sheets, "カウンター席があるかどうか" %>
+      <br><br>
+    <div>
+      <%= f.radio_button :exist_counter_sheets, '1' %>
+      <%= f.label :exist_counter_sheets, 'ある', value: 1 %>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= f.radio_button :exist_counter_sheets, '0' %>
+      <%= f.label :exist_counter_sheets, 'なし', value: 0 %>
+    </div>
+    <br><br>
+    
+    
+    <div class="form-group">
+      <%= f.label :exist_solo_tables, "ひとり用のテーブル席があるかどうか" %>
+      <br><br>
+    <div>
+      <%= f.radio_button :exist_solo_tables, '1' %>
+      <%= f.label :exist_solo_tables, 'ある', value:  1 %>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <%= f.radio_button :exist_solo_tables, '0' %>
+      <%= f.label :exist_solo_tables, 'なし', value: 0 %>
+    </div>
+    <br><br>
+    
+    
+    <div class="form-group">
+      <%= f.label :frequent_solo_visitors, "ひとり客が多いかどうか" %>
+      <br><br>
+      <% 5.times do |i| %>
+        <%= f.radio_button :frequent_solo_visitors, i + 1 %>
+        <%= f.label :frequent_solo_visitors, value: i + 1 %>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <% end %>
+    </div>
+    <br><br>
+    
+    
+    <div class="form-group">
+      <%= f.label :delivery_speed, "商品の提供スピードは速いかどうか" %>
+      <br><br>
+      <% 5.times do |i| %>
+        <%= f.radio_button :delivery_speed, i + 1 %>
+        <%= f.label :delivery_speed, value: i + 1 %>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <% end %>
+    </div>
+    <br><br>
+    
+    
+    <div class="form-group">
+      <%= f.label :calmness, "お店の雰囲気は良いかどうか" %>
+      <br><br>
+      <% 5.times do |i| %>
+        <%= f.radio_button :calmness, i + 1 %>
+        <%= f.label :calmness, value: i + 1 %>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <% end %>
+    </div>
+    <br><br>
+    
+    
+    <div class="col-md-6 offset-md-3 text-center">
+      <%= f.submit "レビューを投稿する", class: "btn btn-primary" %>
+    </div>
+    <br><br>
+    <br><br>
+
+  <% end %>
 </div>
