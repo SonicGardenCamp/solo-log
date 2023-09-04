@@ -1,30 +1,21 @@
-<% provide(:title, @shop.name) %>
-<h1>
-  <%= "店名：" + @shop.name %>
-</h1>
-
-
-<h2>
-  <%= "住所：" + @shop.address %>
-</h2>
-
-<h3>
-</h3>
-
 <div class="col-md-8">
-      <h3>reviews (<%= @reviews.count %>)</h3>
-      <ol class="microposts">
-
-      </ol>
+  <h1>店名：<%= @shop.name %></h1>
 </div>
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="col-md-8">
+  <h2>住所：<%= @shop.address %></h2>
+</div>
+
+<div class="col-md-8">
+  <h3>投稿件数： <%= @reviews.count %>件</h3>
+</div>
+
+<!--ページ幅に合わせてカードの列数を減少させる-->
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
   <div class="col">
     <div class="card h-100">
       <div class="card-body text-center">
-        <%= link_to "投稿する", new_review_path , class:"btn btn-primary rounded-pill"%>
-
-        <!--<button type="button" class="btn btn-primary rounded-pill">投稿する</button>-->
+        <%= link_to "投稿する", new_shop_review_path(shop_id: @shop.id), class: "btn btn-primary rounded-pill" %>
       </div>
     </div>
   </div>
