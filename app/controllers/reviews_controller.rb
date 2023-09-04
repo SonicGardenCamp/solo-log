@@ -1,26 +1,15 @@
 class ReviewsController < ApplicationController
-
+  
   def new
-    @review = Review.new
+    @shop = Shop.find(params[:shop_id])
+    @review = @shop.reviews.build
   end
-
-　#GPTのコード
-  # def create
-  #   @shop = Shop.find(params[:shop_id])
-  #   @review = @shop.reviews.build(review_params)
-  #   @review.user = current_user
-  #   if @review.save
-  #     redirect_to @review.shop
-  #   else
-  #     render 'new'
-  #   end
-  # end
-
-　#元のコード
+  
   def create
     @review = Review.new(review_params)
     # もしcurrent_userがいなければ、review.userはnil
-    # @review.user = current_user
+    @review.user = current_user
+    @review.shop = Shop.find(params[:shop_id])
     if @review.save
       flash[:notice] = "作成できました"
       redirect_to @review.shop
@@ -29,11 +18,11 @@ class ReviewsController < ApplicationController
       render 'new'
     end
   end
-
+  
   def show
     @review = Review.find(params[:id])
   end
-
+  
   #def destroy
   #end
 

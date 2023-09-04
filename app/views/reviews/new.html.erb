@@ -4,7 +4,8 @@
 <br><br>
 
 <div class="col-md-6 offset-md-3">
-  <%= form_with(model: @review,  method: :post) do |f| %>
+  <%= form_with(model: @review,  method: :post, url: shop_reviews_url(@review.shop)) do |f| %>
+    <%= render 'layouts/validation_errors', model: @review %>
   
     <div class="form-group">
       <%= f.label :rate, "このお店に星をつける" %>
