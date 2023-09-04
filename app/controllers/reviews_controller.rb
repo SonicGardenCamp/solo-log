@@ -28,8 +28,8 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:rate, :comment, :exist_counter_sheets,
-                                   :frequent_solo_visitors, :exist_solo_tables,
+    params.require(:review).permit(:rate, :comment, :counter_sheets_available,
+                                   :frequent_solo_visitors, :solo_tables_available,
                                    :easy_to_order, :delivery_speed, :calmness)
   end
 end
