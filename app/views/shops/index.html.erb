@@ -3,16 +3,41 @@
 <h1>All shops</h1>
 
 <h2>検索条件</h2>
-<%= search_form_for @q, url: shops_path do |f| %>
-  <%= f.label :name, 'お店の名前' %>
-  <%= f.search_field :name_cont %>
-  <%= f.submit '検索' %>
-<% end %>
-<%#= form_with model: @q, url: shops_path, method: :get do |f| %>
+<%#= search_form_for @q, url: shops_path do |f| %>
   <%#= f.label :name, 'お店の名前' %>
   <%#= f.search_field :name_cont %>
   <%#= f.submit '検索' %>
 <%# end %>
+<%= form_with model: @q, url: shops_path, method: :get do |f| %>
+  <div class="row mb-5">
+    <div class="col-4">
+      <%= f.label :name, 'お店の名前' %>
+      <%= f.search_field :name_cont %>
+    </div>
+    <div class="col-6">
+      <ul class="list-group list-group-horizontal">
+        <li class="list-group-item active">
+          並び順<i class="fa-solid fa-arrow-down-wide-short"></i>
+        </li>
+        <li class="list-group-item">
+          <%= label_tag "sort_order_none", '指定なし' %>
+          <%= radio_button_tag "sort_order", "none", params[:sort_order] == 'none' || params[:sort_order].nil? %>
+        </li>
+        <li class="list-group-item">
+          <%= label_tag "sort_order_most_rating", '評価の多い順' %>
+          <%= radio_button_tag "sort_order", "most_rating", params[:sort_order] == 'most_rating' %>
+        </li>
+        <li class="list-group-item">
+          <%= label_tag "sort_order_highest_rating", '評価の高い順' %>
+          <%= radio_button_tag "sort_order", "highest_rating", params[:sort_order] == 'highest_rating' %>
+        </li>
+      </ul>
+    </div>
+    <div class="col-2">
+      <%= f.submit '検索', class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>
 <div class="container">
   <div class="row row-eq-height" >
     <% @shops.each_with_index do |shop, index| %>
@@ -29,7 +54,7 @@
             <% end %>
             <!-- ↑仮の画像を表示 -->
             <div class="card-body">
-              <h5 class="card-title"><%= shop.name %></h5>
+              <h5 class="card-title"><%= shop.name %><%= shop.reviews.average(:rate) %></h5>
               <p class="card-text"><%= shop.address %></p>
             </div>
           <% end %>
