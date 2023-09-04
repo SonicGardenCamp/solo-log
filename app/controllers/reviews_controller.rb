@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
   
   def show
     @review = Review.find(params[:id])
-    @user = @review.user
+    @user = current_user if user_signed_in?
   end
   
   #def destroy

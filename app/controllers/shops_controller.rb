@@ -13,4 +13,3 @@ class ShopsController < ApplicationController
     @q = Shop.ransack(params[:q])
   end
 end
-end
