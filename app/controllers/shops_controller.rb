@@ -1,7 +1,7 @@
 class ShopsController < ApplicationController
-  before_action :set_q, only: :index
+  # before_action :set_q, only: :index
   def index
-    @shops = @q.result
+    # @shops = @q.result
   end
 
   def show
