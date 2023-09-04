@@ -51,7 +51,7 @@ class ReviewsController < ApplicationController
       render 'edit'
     end
   end
-
+# 
   private
 
   def review_params
