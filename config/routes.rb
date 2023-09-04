@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   }
   
   resources :shops,          only: [:index, :show] do
-    resources :reviews,        only: [:index, :new, :create, :show], shallow: true
+    resources :reviews,        only: [:index, :new, :create, :show, :destroy, :edit], shallow: true
   end
   
   resources :users do
