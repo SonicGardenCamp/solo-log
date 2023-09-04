@@ -2,6 +2,7 @@ class ShopsController < ApplicationController
   # before_action :set_q, only: :index
   def index
     @shops = Shop.all
+    gon.shops = Shop.all
     # @shops = @q.result
   end
 

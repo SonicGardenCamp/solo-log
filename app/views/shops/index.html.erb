@@ -10,30 +10,39 @@
 
 <script>
 let map;
+let geocoder;
+let marker = []; // マーカーを複数表示させたいので、配列化
+let infoWindow = []; // 吹き出しを複数表示させたいので、配列化
 
-const shops = [
-  <% @shops.each do |shop| %>
-    {
-      lat: <%= shop.latitude %>,
-      lng: <%= shop.longitude %>
-    },
-  <% end %>
-];
+const shops = gon.shops;
 
 function initMap(){
+  // geocoderを初期化
   geocoder = new google.maps.Geocoder()
-
+  // mapの初期位置設定
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 38, lng: 139.5},
     zoom: 4,
   });
-
-  shops.forEach(shop=> {
-    marker = new google.maps.Marker({
-      position:  {lat: shop.lat , lng: shop.lng},
+  
+  for (let i = 0; i < shops.length; i++) {
+    // mapの表示
+    marker[i] = new google.maps.Marker({
+      position:  {lat: shops[i].latitude , lng: shops[i].longitude},
       map: map
     });
-  });
+    
+    // 吹き出しの表示
+    infoWindow[i] = new google.maps.InfoWindow({
+      content: `${shops[i].name}`
+    });
+    
+    // markerがクリックされた時
+    marker[i].addListener("click", function(){
+      // infoWindowを表示
+      infoWindow[i].open(map, marker[i]);
+    });
+  }
 }
 
 </script>
