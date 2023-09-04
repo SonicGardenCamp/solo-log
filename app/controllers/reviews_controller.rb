@@ -45,7 +45,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     if @review.update(review_params)
       # 更新が成功した場合の処理
-      redirect_to review_path(@review), notice: 'レビューが更新されました。'
+      redirect_to @review.shop, notice: 'レビューが更新されました。'
     else
       # 更新が失敗した場合の処理
       render 'edit'

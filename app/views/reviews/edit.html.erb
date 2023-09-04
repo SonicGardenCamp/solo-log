@@ -13,7 +13,7 @@
       <%= f.label :rate, "このお店に星をつける" %>
       <br><br>
       <% 5.times do |i| %>
-        <%= f.radio_button :rate, i + 1 %>
+        <%= f.radio_button :rate, i + 1, checked: @review.rate == i + 1 %>
         <%= f.label :rate, value: i + 1 %>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <% end %>
@@ -41,10 +41,10 @@
       <%= f.label :counter_sheets_available, "カウンター席があるかどうか" %>
       <br><br>
     <div>
-      <%= f.radio_button :counter_sheets_available, '1' %>
+      <%= f.radio_button :counter_sheets_available, 1, checked: @review.counter_sheets_available == 1 %>
       <%= f.label :counter_sheets_available, 'ある', value: 1 %>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <%= f.radio_button :counter_sheets_available, '0' %>
+      <%= f.radio_button :counter_sheets_available, 0, checked: @review.counter_sheets_available == 0 %>
       <%= f.label :counter_sheets_available, 'なし', value: 0 %>
     </div>
     <br><br>
@@ -54,10 +54,10 @@
       <%= f.label :solo_tables_available, "ひとり用のテーブル席があるかどうか" %>
       <br><br>
     <div>
-      <%= f.radio_button :solo_tables_available, '1' %>
+      <%= f.radio_button :solo_tables_available, 1, checked: @review.solo_tables_available == 1 %>
       <%= f.label :solo_tables_available, 'ある', value:  1 %>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <%= f.radio_button :solo_tables_available, '0' %>
+      <%= f.radio_button :solo_tables_available, 0, checked: @review.solo_tables_available == 0 %>
       <%= f.label :solo_tables_available, 'なし', value: 0 %>
     </div>
     <br><br>
@@ -66,7 +66,7 @@
       <%= f.label :frequent_solo_visitors, "ひとり客の利用が多いかどうか" %>
       <br><br>
       <% 5.times do |i| %>
-        <%= f.radio_button :frequent_solo_visitors, i + 1 %>
+        <%= f.radio_button :frequent_solo_visitors, i + 1, checked: @review.frequent_solo_visitors == i + 1 %>
         <%= f.label :frequent_solo_visitors, value: i + 1 %>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <% end %>
@@ -77,7 +77,7 @@
       <%= f.label :easy_to_order, "注文がしやすいかどうか" %>
       <br><br>
       <% 5.times do |i| %>
-        <%= f.radio_button :easy_to_order, i + 1 %>
+        <%= f.radio_button :easy_to_order, i + 1, checked: @review.easy_to_order == i + 1 %>
         <%= f.label :easy_to_order, value: i + 1 %>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <% end %>
@@ -88,7 +88,7 @@
       <%= f.label :delivery_speed, "商品の提供スピードは速いかどうか" %>
       <br><br>
       <% 5.times do |i| %>
-        <%= f.radio_button :delivery_speed, i + 1 %>
+        <%= f.radio_button :delivery_speed, i + 1, checked: @review.delivery_speed == i + 1 %>
         <%= f.label :delivery_speed, value: i + 1 %>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <% end %>
@@ -99,7 +99,7 @@
       <%= f.label :calmness, "店内の雰囲気は良いかどうか" %>
       <br><br>
       <% 5.times do |i| %>
-        <%= f.radio_button :calmness, i + 1 %>
+        <%= f.radio_button :calmness, i + 1, checked: @review.calmness == i + 1 %>
         <%= f.label :calmness, value: i + 1 %>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <% end %>
