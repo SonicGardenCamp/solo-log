@@ -22,38 +22,33 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @user = current_user if user_signed_in?
   end
-  
+
   def destroy
     @review = Review.find(params[:id])
-  
-    # ユーザーが削除権限を持つことを確認
     if current_user && current_user.id == @review.user_id
-      shop = @review.shop # レビューが関連付けられているショップを取得
       @review.destroy
-      flash[:notice] = "レビューが削除されました。"
-      redirect_to shop_path(shop) # ショップページにリダイレクト
+      respond_to do |format|
+        format.html { redirect_to root_path, notice: "レビューが削除されました。" }
+        format.js
+      end
     else
-      flash[:alert] = "削除権限がありません。"
-      redirect_to request.referrer || shop_path(@review.shop)
+      redirect_to root_path, alert: "レビューの削除に失敗しました。"
     end
   end
 
 
-  
   def edit
     @review = Review.find(params[:id])
   end
   
   def update
-    @review = Rview.find(params[:id])
-    if @review.update
-      # 更新に成功した場合を扱う
-      flash[:success] = "レビューが更新されました"
-      redirect_to @review.shop
+    @review = Review.find(params[:id])
+    if @review.update(review_params)
+      # 更新が成功した場合の処理
+      redirect_to review_path(@review), notice: 'レビューが更新されました。'
     else
-      # 更新に失敗した場合は再度editページへ
-      flash[:alert] = "更新に失敗しました"
-      render 'edit', status: :unprocessable_entity
+      # 更新が失敗した場合の処理
+      render 'edit'
     end
   end
 
@@ -62,6 +57,11 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:rate, :comment, :counter_sheets_available,
                                    :frequent_solo_visitors, :solo_tables_available,
-                                   :easy_to_order, :delivery_speed, :calmness)
+                                   :easy_to_order, :delivery_speed, :calmness, :shop_id)
+  end
+  
+  def correct_user
+      @review = current_user.reviews.find_by(id: params[:id])
+      redirect_to root_url, status: :see_other if @review.nil?
   end
 end

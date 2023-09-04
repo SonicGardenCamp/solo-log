@@ -8,6 +8,7 @@ def give_review
   rand(1..5)
 end
 
+
 10.times do
   shop = Shop.new(latitude: Faker::Address.latitude.ceil(6),
                   longitude: Faker::Address.longitude.ceil(6),
