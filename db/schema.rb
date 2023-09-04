@@ -10,27 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_01_005746) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_01_075818) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "relationships", force: :cascade do |t|
-    t.integer "follower_id"
-    t.integer "followed_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["followed_id"], name: "index_relationships_on_followed_id"
-    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
-    t.index ["follower_id"], name: "index_relationships_on_follower_id"
-  end
 
   create_table "reviews", force: :cascade do |t|
     t.bigint "shop_id", null: false
     t.integer "rate", default: 0
     t.text "comment"
-    t.boolean "exist_counter_sheets?"
+    t.boolean "exist_counter_sheets"
     t.integer "frequent_solo_visitors"
-    t.boolean "exist_solo_tables?"
+    t.boolean "exist_solo_tables"
     t.integer "easy_to_order"
     t.integer "delivery_speed"
     t.integer "calmness"

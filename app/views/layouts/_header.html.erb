@@ -9,7 +9,7 @@
         <div class="navbar-nav">
           <% if user_signed_in? %>
             <%= link_to 'ホーム', root_path, method: :get, class: "nav-link" %>
-            <button type="button" class="btn btn-warning nav-link" data-bs-toggle="modal" data-bs-target="#logoutModal">
+            <button type="button" class="btn btn-warning nav-link text-start" data-bs-toggle="modal" data-bs-target="#logoutModal">
               ログアウト
             </button>
             <%= render 'layouts/logout_modal' %>

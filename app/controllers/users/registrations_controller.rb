@@ -25,7 +25,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
             respond_with resource, location: after_inactive_sign_up_path_for(resource)
         end
     else
-        flash[:alert] = "新規登録に失敗しました"
+        flash.now[:alert] = "新規登録に失敗しました"
         clean_up_passwords resource
         set_minimum_password_length
         respond_with resource, status: :see_other # 登録失敗時のrespond_withにerror出したいので、ここで303 statusを追加
