@@ -1,6 +1,13 @@
-<% if user_signed_in?%>
+<% if user_signed_in? && @user.present? %>
+  <h1>Hello</h1>
+  <%= turbo_frame_tag "follow_button" do %>
+    <% if current_user.following?(@user) %>
+      <%= render 'relationships/unfollow', locals: { user: @user } %>
+    <% else %>
+      <%= render 'relationships/follow', locals: { user: @user } %>
+    <% end %>
+  <% end %>
 <% end %>
-
 
 <h1><%= @review.shop.name %></h1>
 <p>Rate: <%= @review.rate%></p>
