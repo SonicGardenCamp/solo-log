@@ -9,7 +9,6 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     # もしcurrent_userがいなければ、review.userはnil
     @review.user = current_user
-    @review.shop = Shop.find(params[:shop_id])
     if @review.save
       flash[:notice] = "作成できました"
       redirect_to @review.shop
