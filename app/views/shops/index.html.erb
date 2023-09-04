@@ -28,13 +28,13 @@ function initMap(){
   for (let i = 0; i < shops.length; i++) {
     // mapの表示
     marker[i] = new google.maps.Marker({
-      position:  {lat: shops[i].latitude , lng: shops[i].longitude},
+      position:  {lat: shops[i].latitude, lng: shops[i].longitude},
       map: map
     });
     
     // 吹き出しの表示
     infoWindow[i] = new google.maps.InfoWindow({
-      content: `${shops[i].name}`
+      content: `<a href='/shops/${shops[i].id}'>${shops[i].name}<a>`
     });
     
     // markerがクリックされた時
