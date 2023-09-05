@@ -30,7 +30,7 @@
       
       <div class="form-group mb-4">
         <div>
-          <%= f.label :counter_sheets_available, "カウンター席があるかどうか", class: "form-label" %>
+          <%= f.label :counter_sheets_available, "カウンター席があるか", class: "form-label" %>
         </div>
         <div class="form-check form-check-inline">
           <%= f.radio_button :counter_sheets_available, '1' %>
@@ -44,7 +44,7 @@
       
       <div class="form-group mb-4">
         <div>
-          <%= f.label :solo_tables_available, "ひとり用のテーブル席があるかどうか", class: "form-label" %>
+          <%= f.label :solo_tables_available, "一人用の席があるか", class: "form-label" %>
         </div>
         <div class="form-check form-check-inline">
           <%= f.radio_button :solo_tables_available, '1' %>
@@ -57,7 +57,7 @@
       </div>
       
       <div class="form-group mb-4">
-        <div><%= f.label :frequent_solo_visitors, "ひとり客が多いかどうか", class: "form-label" %></div>
+        <div><%= f.label :frequent_solo_visitors, "一人客が多いか", class: "form-label" %></div>
         <% (1..5).each do |frequent_solo_visitors| %>
           <div class="form-check form-check-inline">
             <%= f.radio_button :frequent_solo_visitors, frequent_solo_visitors %>
@@ -67,7 +67,17 @@
       </div>
       
       <div class="form-group mb-4">
-        <div><%= f.label :delivery_speed, "商品の提供スピードは速いかどうか", class: "form-label" %></div>
+        <div><%= f.label :easy_to_order, "注文しやすいか", class: "form-label" %></div>
+        <% (1..5).each do |easy_to_order| %>
+          <div class="form-check form-check-inline">
+            <%= f.radio_button :easy_to_order, easy_to_order %>
+            <%= f.label :easy_to_order, easy_to_order, class: "form-check-label" %>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="form-group mb-4">
+        <div><%= f.label :delivery_speed, "料理の提供スピードが早いか", class: "form-label" %></div>
         <% (1..5).each do |delivery_speed| %>
           <div class="form-check form-check-inline">
             <%= f.radio_button :delivery_speed, delivery_speed %>
@@ -77,7 +87,7 @@
       </div>
       
       <div class="form-group mb-4">
-        <div><%= f.label :calmness, "お店の雰囲気は良いかどうか", class: "form-label" %>></div>
+        <div><%= f.label :calmness, "店内が落ち着いているか", class: "form-label" %></div>
         <% (1..5).each do |calmness| %>
           <div class="form-check form-check-inline">
             <%= f.radio_button :calmness, calmness %>
