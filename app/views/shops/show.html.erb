@@ -50,9 +50,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
-                  <!--Ajaxが必要-->
-                  <!--<button type="button" class="btn btn-danger">削除する</button>-->
-                  <%= link_to '削除する', shop_path(@shop), method: :delete, remote: true, data: { confirm: '削除しますか？' }, class: 'btn btn-danger' %>
+                  <%= button_to '削除する', review_path(review), method: :delete, remote: true, data: { confirm: '削除しますか？' }, class: 'btn btn-danger' %>
 
                 </div>
               </div>

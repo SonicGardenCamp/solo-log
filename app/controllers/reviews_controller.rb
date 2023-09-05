@@ -44,13 +44,13 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     if @review.destroy
       respond_to do |format|
-        format.html { redirect_to shops_url, notice: 'レビューが削除されました' }
+        format.html { redirect_to shop_url(@review.shop), notice: 'レビューが削除されました' }
         format.js   # 追加: JavaScript形式のレスポンスを返す (ステータスコード 200)
       end
     else
       puts @review.errors.full_messages # 削除に失敗した場合にエラーメッセージを表示
       respond_to do |format|
-        format.html { redirect_to shops_url, alert: 'レビューの削除に失敗しました' }
+        format.html { redirect_to shop_url(@review.shop), alert: 'レビューの削除に失敗しました' }
         format.js { render status: :unprocessable_entity } # ステータスコード 422
       end
     end
