@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'map/show_reviews', to: 'map#show_reviews'
   
   resources :shops,          only: [:index, :show] do
-    resources :reviews,        only: [:index, :new, :create, :show], shallow: true
+    resources :reviews,        only: [:index, :new, :create, :show, :destroy, :edit, :update], shallow: true
   end
   
   resources :users do
