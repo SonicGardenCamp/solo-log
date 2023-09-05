@@ -24,6 +24,11 @@ body {
   }
 }
 
+/* フォーカス時にボックスシャドウを無効化 */
+.btn:focus {
+  box-shadow: none !important;
+}
+
 /* flash */
 .validation-error-list {
  list-style-position: inside;
