@@ -55,13 +55,13 @@ end
 
 Shop.all.each do |shop|
   10.times do
-    shop.reviews.build(rate: rand(1..5), comment: Faker::Lorem.paragraph(sentence_count: 4),
+    review = shop.reviews.build(rate: rand(1..5), comment: Faker::Lorem.paragraph(sentence_count: 4),
                         counter_sheets_available: random_true_false,
                         frequent_solo_visitors: give_review,
                         solo_tables_available: random_true_false,
                         easy_to_order: give_review,
                         delivery_speed: give_review,
                         calmness: give_review)
-    shop.save!
+    review.save!
   end
 end
