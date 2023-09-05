@@ -4,9 +4,14 @@ class RelationshipsController < ApplicationController
   def create
     @user = User.find(params[:followed_id])
     current_user.follow(@user)
-    #redirect_to review_path(params[:review_id])
     respond_to do |format|
-      format.html { redirect_to review_path(params[:review_id]) }
+      format.html do
+        if params[:review_id].present?
+          redirect_to review_path(params[:review_id])
+        else
+          redirect_to @user
+        end
+      end
       format.turbo_stream
     end
   end
@@ -14,9 +19,14 @@ class RelationshipsController < ApplicationController
   def destroy
     @user = Relationship.find(params[:id]).followed
     current_user.unfollow(@user)
-    #redirect_to review_path(params[:review_id])
     respond_to do |format|
-      format.html { redirect_to review_path(params[:review_id]) }
+      format.html do
+        if params[:review_id].present?
+          redirect_to review_path(params[:review_id])
+        else
+          redirect_to @user
+        end
+      end
       format.turbo_stream
     end
   end
