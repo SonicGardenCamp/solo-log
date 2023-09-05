@@ -44,7 +44,7 @@ function initMap(){
     
     // 吹き出しの表示
     infoWindow[i] = new google.maps.InfoWindow({
-      content: `<a href='/shops/${shops[i].id}'>${shops[i].name}<a><br />${shops[i].address}`
+      content: `${shops[i].name}<br />${shops[i].address}<br /><a href='/shops/${shops[i].id}' class="btn btn-primary btn-sm">お店の詳細を見る<a>`
     });
     
     // markerがクリックされた時
