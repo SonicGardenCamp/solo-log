@@ -10,8 +10,8 @@ class Review < ApplicationRecord
   validates :easy_to_order, numericality: {only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 5, allow_blank: true }
   validates :delivery_speed, numericality: {only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 5, allow_blank: true }
   validates :calmness, numericality: {only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 5, allow_blank: true }
-  validates :latitude, presence: true, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90 }
-  validates :longitude, presence: true, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }
+  validates :latitude, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90, allow_blank: true }
+  validates :longitude, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180, allow_blank: true }
 
   def set_lat_and_long
     if image? && exif_data_exists_in_image?
