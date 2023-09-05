@@ -25,7 +25,7 @@
 </div>
 <br>
 
-<p>カウンター席があるか</p>
+<p>カウンター席があるかどうか</p>
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="radio" name="counterSeets" id="inlineRadio1" value="option1" <%= @review.counter_sheets_available ? "checked" : ""%> readonly>
   <label class="form-check-label" for="inlineRadio1">はい</label>
@@ -36,30 +36,19 @@
 </div>　
 <br><br>
 
-<p>一人席があるか</p>
-<% unless @review.solo_tables_available.nil? %>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="solopTables" id="inlineRadio1" value="option1" <%= @review.solo_tables_available ? "checked" : "" %> readonly>
-    <label class="form-check-label" for="inlineRadio3">はい</label>
-  </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="soloTables" id="inlineRadio2" value="option2" <%= @review.solo_tables_available ? "" : "checked" %> readonly>
-    <label class="form-check-label" for="inlineRadio4">いいえ</label>
-  </div>
-<% else %>
+<p>ひとり用のテーブル席があるかどうか</p>
 <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="solopTables" id="inlineRadio1" value="option1"  readonly>
-    <label class="form-check-label" for="inlineRadio3">はい</label>
-  </div>
-  <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="soloTables" id="inlineRadio2" value="option2"  readonly>
-    <label class="form-check-label" for="inlineRadio4">いいえ</label>
-  </div>
-<% end %>
-  <br><br>
+  <input class="form-check-input" type="radio" name="solopTables" id="inlineRadio1" value="option1" <%= @review.solo_tables_available ? "checked" : "" %> readonly>
+  <label class="form-check-label" for="inlineRadio3">はい</label>
+</div>
+<div class="form-check form-check-inline">
+  <input class="form-check-input" type="radio" name="soloTables" id="inlineRadio2" value="option2" <%= @review.solo_tables_available ? "" : "checked" %> readonly>
+  <label class="form-check-label" for="inlineRadio4">いいえ</label>
+</div>
+<br><br>
 
 
-<p>一人客が多いか</p>
+<p>ひとり客の利用が多いかどうか</p>
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="radio" name="frecentSoloVisitorsOptions" id="inlineRadio1" value="1" <%= @review.frequent_solo_visitors == 1 ? "checked" : "" %> readonly>
   <label class="form-check-label" for="inlineRadio1">1</label>
@@ -83,7 +72,7 @@
 <br><br>
 
 
-<p>注文しやすいか</p>
+<p>注文がしやすいかどうか</p>
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="radio" name="easyOrder" id="inlineRadio1" value="1" <%= @review.easy_to_order == 1 ? "checked" : "" %> readonly>
   <label class="form-check-label" for="inlineRadio1">1</label>
@@ -107,7 +96,7 @@
 <br><br>
 
 
-<p>料理の提供スピードが早いか</p>
+<p>商品の提供スピードは速いかどうか</p>
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="radio" name="deliverySpeed" id="inlineRadio1" value="1" <%= @review.delivery_speed== 1 ? "checked" : "" %> readonly>
   <label class="form-check-label" for="inlineRadio1">1</label>
@@ -131,7 +120,7 @@
 <br><br>
 
 
-<p>店内が落ち着いているか</p>
+<p>店内の雰囲気は良いかどうか</p>
 <div class="form-check form-check-inline">
   <input class="form-check-input" type="radio" name="inCalmness" id="inlineRadio1" value="1" <%= @review.calmness == 1 ? "checked" : "" %> readonly>
   <label class="form-check-label" for="inlineRadio1">1</label>

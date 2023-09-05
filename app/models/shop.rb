@@ -10,11 +10,20 @@ class Shop < ApplicationRecord
 
   scope :sort_by_highest_rate, -> { group(:review_id).count }
 
-  def self.ransackable_attributes(auth_object = nil)
-    ["name"]
+  def average_rating
+    # Review.where(shop_id: shop.id).group(:shop_id).select(:shop_id, 'avg(*) as avg')
+    reviews.average(:rate)
   end
 
-  def self.sort_by_count_of_reviews
-    Review.group(:shop_id).includes(:shop).select(:shop_id, 'count(*) as c').order(c: :desc).map{|review| review.shop}
+  def self.sort_by_count_of_reviews(shops)
+    Review.where(shop_id: shops.ids).group(:shop_id).includes(:shop).select(:shop_id, 'count(*) as c').order(c: :desc).map{|review| review.shop}
+  end
+
+  def self.sort_by_average_rating(shops)
+    Review.where(shop_id: shops.ids).group(:shop_id).includes(:shop).select(:shop_id, 'avg(rate) as avg').order(avg: :desc).map{|review| review.shop}
+  end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["name"]
   end
 end
