@@ -13,16 +13,16 @@ class Review < ApplicationRecord
   validates :latitude, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90, allow_blank: true }
   validates :longitude, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180, allow_blank: true }
 
-  def set_lat_and_long
+  def update_lat_and_long
     if image? && exif_data_exists_in_image?
-      lat_deg  = to_deg(image.get_exif_by_entry('GPSLatitude')[0][1].split(','))
-      long_deg = to_deg(image.get_exif_by_entry('GPSLongitude')[0][1].split(','))
-      self.latitude, self.longitude = lat_deg, long_deg
+      lat_deg  = to_deg(Magick::ImageList.new('public'+image.url).get_exif_by_entry('GPSLatitude')[0][1].split(','))
+      long_deg = to_deg(Magick::ImageList.new('public'+image.url).get_exif_by_entry('GPSLongitude')[0][1].split(','))
+      update_columns(latitude: lat_deg, longitude: long_deg)
     end
   end
 
   def exif_data_exists_in_image?
-    image.get_exif_by_entry('GPSLatitude')[0][1].present?
+    Magick::ImageList.new('public'+image.url).get_exif_by_entry('GPSLatitude')[0][1].present?
   end
 
   def to_deg(dms)

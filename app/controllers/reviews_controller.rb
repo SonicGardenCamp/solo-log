@@ -3,13 +3,15 @@ class ReviewsController < ApplicationController
   def new
     @shop = Shop.find(params[:shop_id])
     @review = @shop.reviews.build
+    puts @review.shop.id
   end
 
   def create
-    @review = Review.new(review_params)
-    @review.set_lat_and_long
+    @shop = Shop.find(params[:shop_id])
+    @review = @shop.reviews.build(review_params)
     @review.user = current_user
     if @review.save
+      @review.set_lat_and_long
       flash[:notice] = "作成できました"
       redirect_to @review.shop
     else
@@ -58,7 +60,8 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:rate, :comment, :counter_sheets_available,
                                    :frequent_solo_visitors, :solo_tables_available,
-                                   :easy_to_order, :delivery_speed, :calmness, :shop_id)
+                                   :easy_to_order, :delivery_speed, :calmness, :shop_id,
+                                   :image)
   end
   
   def correct_user
