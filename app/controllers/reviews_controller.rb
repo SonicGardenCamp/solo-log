@@ -7,8 +7,8 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
-    @review.shop_id = params[:shop_id]
-    @review.user = current_user if user_signed_in?
+    @review.set_lat_and_long
+    @review.user = current_user
     if @review.save
       flash[:notice] = "作成できました"
       redirect_to @review.shop
