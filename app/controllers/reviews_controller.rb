@@ -22,24 +22,6 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
   end
 
-
-
-  # def destroy
-  #   # @review = Review.find(params[:id])
-  #   # if current_user && current_user.id == @review.user_id
-  #   #   @review.destroy
-  #   #   redirect_to root_path
-  #   #   flash[:notice] = "レビューが削除されました。"
-  #   # else
-  #   #   redirect_to root_path
-  #   #   flash[:alert] = "レビューの削除に失敗しました。"
-  #   # end
-  #   # app/controllers/reviews_controller.rb
-  # end
-
-
-# app/controllers/reviews_controller.rb
-
   def destroy
     @review = Review.find(params[:id])
     if @review.destroy
@@ -56,9 +38,6 @@ class ReviewsController < ApplicationController
     end
   end
 
-
-
-
   def edit
     @review = Review.find(params[:id])
   end
@@ -73,7 +52,7 @@ class ReviewsController < ApplicationController
       render 'edit'
     end
   end
-# 
+ 
   private
 
   def review_params
