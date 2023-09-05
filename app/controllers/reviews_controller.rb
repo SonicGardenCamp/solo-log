@@ -23,18 +23,40 @@ class ReviewsController < ApplicationController
     @user = current_user if user_signed_in?
   end
 
+
+  # def destroy
+  #   # @review = Review.find(params[:id])
+  #   # if current_user && current_user.id == @review.user_id
+  #   #   @review.destroy
+  #   #   redirect_to root_path
+  #   #   flash[:notice] = "レビューが削除されました。"
+  #   # else
+  #   #   redirect_to root_path
+  #   #   flash[:alert] = "レビューの削除に失敗しました。"
+  #   # end
+  #   # app/controllers/reviews_controller.rb
+  # end
+
+
+# app/controllers/reviews_controller.rb
+
   def destroy
     @review = Review.find(params[:id])
-    if current_user && current_user.id == @review.user_id
-      @review.destroy
+    if @review.destroy
       respond_to do |format|
-        format.html { redirect_to root_path, notice: "レビューが削除されました。" }
-        format.js
+        format.html { redirect_to shops_url, notice: 'レビューが削除されました' }
+        format.js   # 追加: JavaScript形式のレスポンスを返す (ステータスコード 200)
       end
     else
-      redirect_to root_path, alert: "レビューの削除に失敗しました。"
+      puts @review.errors.full_messages # 削除に失敗した場合にエラーメッセージを表示
+      respond_to do |format|
+        format.html { redirect_to shops_url, alert: 'レビューの削除に失敗しました' }
+        format.js { render status: :unprocessable_entity } # ステータスコード 422
+      end
     end
   end
+
+
 
 
   def edit
