@@ -21,6 +21,7 @@ end
 
 20.times do
   user = User.new(
+    name: Faker::Name.name,
     email: Faker::Internet.email,
     password: Faker::Internet.password(min_length: 8)
   )
