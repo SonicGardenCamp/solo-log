@@ -56,7 +56,7 @@
             </div>
           </div>
 
-          <!--編集ボタン&editページへの遷移-->
+          <!--編集ボタン & editページへの遷移-->
           <% if current_user && current_user.id == review.user_id %>
             <%= link_to "編集", edit_review_path(review), class: "btn btn-primary" %>
           <% end %>
