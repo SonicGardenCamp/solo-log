@@ -1,10 +1,20 @@
-<h2>googlemap</h2>
-<div id='map'></div>
+<div class="shop-index">
+  <h2 class="shop-index-title text-center">地図からお店を探す</h2>
+  <div id='map'></div>
+</div>
 
 <style>
 #map {
   height: 400px;
   width: 600px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+  #map {
+    width: 100%;
+    margin: 0 auto;
+  }
 }
 </style>
 

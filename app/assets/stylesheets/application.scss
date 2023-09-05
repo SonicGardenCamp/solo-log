@@ -50,7 +50,7 @@ footer {
 
 /* ユーザー新規登録ページ */
 .signup-form {
- margin-top: 40px;
+ padding-top: 40px;
  padding-bottom: 40px;
 }
 
@@ -58,4 +58,14 @@ footer {
 .login-form {
  padding-top: 40px;
  padding-bottom: 40px;
+}
+
+/* 店舗一覧ページ */
+.shop-index {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.shop-index-title {
+ margin-bottom: 40px;
 }
