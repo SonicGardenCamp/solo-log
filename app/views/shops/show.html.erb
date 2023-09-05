@@ -20,7 +20,6 @@
       </div>
     </div>
   </div>
-  <!--エラーが起きてる-->
   <% @reviews.each do |review| %>
     <div class="col">
       <div class="card h-100">
@@ -36,8 +35,8 @@
             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
               削除
             </button>
-          <% end %>          
-          
+          <% end %>
+
           <!--モーダルの実装-->
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -57,11 +56,11 @@
             </div>
           </div>
 
-          <!--編集ボタン&editページへの遷移-->
+          <!--編集ボタン & editページへの遷移-->
           <% if current_user && current_user.id == review.user_id %>
             <%= link_to "編集", edit_review_path(review), class: "btn btn-primary" %>
           <% end %>
-          
+
         </div>
       </div>
     </div>
