@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     passwords: "users/passwords",
     confirmations: "users/confirmations"
   }
+
+  get 'map/show_reviews', to: 'map#show_reviews'
   
   resources :shops,          only: [:index, :show] do
     resources :reviews,        only: [:index, :new, :create, :show], shallow: true
