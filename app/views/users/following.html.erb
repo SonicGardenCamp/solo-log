@@ -1,0 +1,8 @@
+<h1>フォロー一覧</h1>
+
+<ul>
+  <% @users.each do |user| %>
+    <li><a href="<%= user_path(user) %>" style="text-decoration: none; color: black;"><%= user.name %></a></li>
+    <br>
+  <% end %>
+</ul>
