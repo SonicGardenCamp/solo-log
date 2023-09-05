@@ -1,0 +1,5 @@
+// app/assets/javascripts/reviews.js.erb
+
+// Ajaxリクエスト成功時の処理
+$('#exampleModal').modal('hide'); // モーダルを閉じる
+$('#review_<%= @review.id %>').remove(); // レビューを非表示にする

@@ -19,6 +19,7 @@
       </div>
     </div>
   </div>
+  <% @reviews = Review.order(updated_at: :desc) %>
   <% @reviews.each do |review| %>
     <div class="col">
       <div class="card h-100">
@@ -28,6 +29,39 @@
         <div class="card-body">
           <h5 class="card-title">評価：<%= review.rate %></h5>
           <p class="card-text">コメント：<%= review.comment %></p>
+
+          <!--モーダルのトリガーボタン-->
+          <% if current_user && current_user.id == review.user_id %>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              削除
+            </button>
+          <% end %>          
+          
+          <!--モーダルの実装-->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">削除しますか？</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  ＊削除したら元には戻せません
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+                  <%= button_to '削除する', review_path(review), method: :delete, remote: true, data: { confirm: '削除しますか？' }, class: 'btn btn-danger' %>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--編集ボタン&editページへの遷移-->
+          <% if current_user && current_user.id == review.user_id %>
+            <%= link_to "編集", edit_review_path(review), class: "btn btn-primary" %>
+          <% end %>
+          
         </div>
       </div>
     </div>
