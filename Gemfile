@@ -21,6 +21,10 @@ gem 'devise-i18n-views'
 gem "pg", "1.3.5"
 gem 'ransack'
 
+group :production do
+  gem 'mini_racer'
+end
+
 group :development, :test do
   gem "debug",   "1.5.0", platforms: %i[ mri mingw x64_mingw ]
 end

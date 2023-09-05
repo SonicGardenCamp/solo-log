@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'users/show'
   root "shops#index"
   devise_for :users, controllers: {
     registrations: "users/registrations",
@@ -6,9 +7,11 @@ Rails.application.routes.draw do
     passwords: "users/passwords",
     confirmations: "users/confirmations"
   }
+
+  get 'map/show_reviews', to: 'map#show_reviews'
   
   resources :shops,          only: [:index, :show] do
-    resources :reviews,        only: [:index, :new, :create, :show], shallow: true
+    resources :reviews,        only: [:index, :new, :create, :show, :destroy, :edit, :update], shallow: true
   end
   
   resources :users do
