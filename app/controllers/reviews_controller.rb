@@ -1,10 +1,10 @@
 class ReviewsController < ApplicationController
-  
+
   def new
     @shop = Shop.find(params[:shop_id])
     @review = @shop.reviews.build
   end
-  
+
   def create
     @review = Review.new(review_params)
     @review.shop_id = params[:shop_id]
@@ -17,11 +17,11 @@ class ReviewsController < ApplicationController
       render 'new'
     end
   end
-  
+
   def show
     @review = Review.find(params[:id])
   end
-  
+
   #def destroy
   #end
 
