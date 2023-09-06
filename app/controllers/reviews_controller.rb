@@ -11,7 +11,6 @@ class ReviewsController < ApplicationController
     @review = @shop.reviews.build(review_params)
     @review.user = current_user
     if @review.save
-      @review.set_lat_and_long
       flash[:notice] = "作成できました"
       redirect_to @review.shop
     else
