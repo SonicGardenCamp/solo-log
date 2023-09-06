@@ -1,6 +1,6 @@
 <br>
 <h1 style="font-size: 26px;">名前 : <%= @user.name %></h1>
-
+<br>
 <div class="stats">
   <a href="<%= following_user_path(@user) %>" style="text-decoration: none; color: black;">
     <strong id="following" class="stat">
@@ -16,7 +16,7 @@
   </a>
 </div>
 
-<div id ="follow_button_container">
+<div id ="follow_button_container11">
   <% if user_signed_in? && current_user != @user%>
     <%= turbo_frame_tag "follow_button" do %>
       <% if current_user.following?(@user) %>
@@ -28,8 +28,7 @@
   <% end %>
 </div>
 
-
-<br>
+<br><br>
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
   <% @reviews.each do |review| %>
     <div class="col">
