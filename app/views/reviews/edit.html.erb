@@ -7,7 +7,7 @@
 <div class="col-md-6 offset-md-3">
   <!--newのコード↓-->
   <%#<%= form_with(model: @review, method: :post, url: shop_reviews_url(@review.shop)) do |f| %>
-  <%= form_with(model: @review, method: :patch, url: review_path(@review)) do |f| %>
+  <%= form_with(model: @review, method: :patch, url: review_path(@review), multipart: true) do |f| %>
     <%= render 'layouts/validation_errors', model: @review %>
 
     <div class="form-group">
@@ -25,6 +25,12 @@
     <div class="form-group">
       <%= f.label :image, "写真を投稿する" %>
       <br><br>
+      <% if @review.image.present? %>
+        <p>現在投稿されている写真</p>
+        <%= image_tag @review.image.url, alt: "...", size: "120x100", class: "border" %>
+      <% end %>
+      <br><br>
+      <p>新しい写真を選ぶ</p>
       <%= f.file_field :image, class: "form-control" %>
     </div>
     <br><br>

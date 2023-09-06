@@ -4,11 +4,14 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: "users/registrations",
     sessions: "users/sessions",
-    passwords: "users/passwords",
-    confirmations: "users/confirmations"
+  }
+  
+  devise_for :admins, controllers: {
+    registrations: "admins/registrations",
+    sessions:      'admins/sessions',
   }
 
-  get 'map/show_reviews', to: 'map#show_reviews'
+  get 'map/show_shops', to: 'map#show_shops'
   
   resources :shops,          only: [:index, :show] do
     resources :reviews,        only: [:index, :new, :create, :show, :destroy, :edit, :update], shallow: true
