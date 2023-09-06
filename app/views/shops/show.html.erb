@@ -4,11 +4,11 @@
 </div>
 
 <div class="col-md-8">
-  <h2>住所：<%= @shop.address %></h2>
+  <h3>住所：<%= @shop.address %></h3>
 </div>
 
 <div class="col-md-8">
-  <h3>投稿件数： <%= @reviews.count %>件</h3>
+  <h5>投稿件数： <%= @reviews.count %>件</h5>
 </div>
 
 <!--ページ幅に合わせてカードの列数を減少させる-->
@@ -24,7 +24,7 @@
     <div class="col">
       <div class="card h-100">
         <a href="<%= review_path(review) %>">
-          <img src="https://user0514.cdnw.net/shared/img/thumb/nichinanIMGL0073_TP_V.jpg" class="card-img-top" alt="...">
+          <%= image_tag review.image.url, class: "card-img-top", alt: "", size: "" %>
         </a>
         <div class="card-body">
           <h5 class="card-title">評価：<%= review.rate %></h5>
@@ -32,17 +32,17 @@
 
           <!--モーダルのトリガーボタン-->
           <% if current_user && current_user.id == review.user_id %>
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="<%= "#review_modal_#{review.id}" %>">
               削除
             </button>
           <% end %>
 
           <!--モーダルの実装-->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="<%= "review_modal_#{review.id}" %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">削除しますか？</h5>
+                  <h5 class="modal-title" >削除しますか？</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -50,7 +50,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
-                  <%= button_to '削除する', review_path(review), method: :delete, remote: true, data: { confirm: '削除しますか？' }, class: 'btn btn-danger' %>
+                  <%= button_to '削除する', review, method: :delete, class: 'btn btn-danger' %>
                 </div>
               </div>
             </div>

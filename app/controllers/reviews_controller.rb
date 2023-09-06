@@ -61,6 +61,7 @@ class ReviewsController < ApplicationController
                                    :frequent_solo_visitors, :solo_tables_available,
                                    :easy_to_order, :delivery_speed, :calmness, :shop_id,
                                    :image)
+
   end
   
   def correct_user

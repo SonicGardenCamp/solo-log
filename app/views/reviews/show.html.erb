@@ -13,9 +13,18 @@
 
 <br>
 <h1><%= @review.shop.name %></h1>
-<p>Rate: <%= @review.rate%></p>
-<p>住所: <%= @review.shop.address %></p>
-<br>
+
+<h3>評価: <%= @review.rate%></h3>
+<h3>住所: <%= @review.shop.address %></h3>
+<br><br>
+
+<%= image_tag @review.image.url, alt: "...", size: "400x400", class: "border" %>
+
+<br><br>
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-labl">コメント</label>
+  <textarea class="w-50 form-control" id="reviewComment" rows="4" readonly><%= @review.comment %></textarea>
+</div>
 
 <%= form_with(model: @review, method: :GET, url: review_path(@review)) do |f| %>
 
