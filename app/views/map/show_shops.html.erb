@@ -1,0 +1,59 @@
+<div class="shop-index">
+  <h2 class="shop-index-title text-center">地図からお店を探す</h2>
+  <div id='map'></div>
+</div>
+
+<style>
+#map {
+  height: 400px;
+  width: 600px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 768px) {
+  #map {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+</style>
+
+<script>
+let map;
+let geocoder;
+let marker = []; // マーカーを複数表示させたいので、配列化
+let infoWindow = []; // 吹き出しを複数表示させたいので、配列化
+
+const shops = gon.shops;
+
+function initMap(){
+  // geocoderを初期化
+  geocoder = new google.maps.Geocoder()
+  // mapの初期位置設定
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 38, lng: 139.5},
+    zoom: 4,
+  });
+  
+  for (let i = 0; i < shops.length; i++) {
+    // mapの表示
+    marker[i] = new google.maps.Marker({
+      position:  {lat: shops[i].latitude, lng: shops[i].longitude},
+      map: map
+    });
+    
+    // 吹き出しの表示
+    infoWindow[i] = new google.maps.InfoWindow({
+      content: `${shops[i].name}<br />${shops[i].address}<br /><a href='/shops/${shops[i].id}' class="btn btn-primary btn-sm">お店の詳細を見る<a>`
+    });
+    
+    // markerがクリックされた時
+    marker[i].addListener("click", function(){
+      // infoWindowを表示
+      infoWindow[i].open(map, marker[i]);
+    });
+  }
+}
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>

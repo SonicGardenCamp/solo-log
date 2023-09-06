@@ -1,17 +1,17 @@
 <div class="login-form">
   <div class="row">
     <div class="col-md-6 offset-md-3">
-      <h2 class ="text-center">ユーザーログイン</h2>
+      <h2 class ="text-center">管理者ログイン</h2>
       
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  
+
         <div class="field form-group mb-3">
-          <%= f.label :email, class: "form-label" %>
+          <%= f.label :email, class: "form-label" %><br />
           <%= f.email_field :email, class: 'form-control', placeholder: "Email", autofocus: true, autocomplete: "email" %>
         </div>
       
         <div class="field form-group mb-3">
-          <%= f.label :password, class: "form-label" %>
+          <%= f.label :password, class: "form-label" %><br />
           <%= f.password_field :password, class: 'form-control', placeholder: "パスワード", autocomplete: "current-password" %>
         </div>
       
@@ -21,13 +21,12 @@
             <%= f.check_box :remember_me %>
           </div>
         <% end %>
-        
+      
         <div class="actions d-grid gap-3">
-          <%= f.submit "ログイン", class: 'btn btn-warning btn-block' %>
-          <%= link_to "新規登録ボタンへ", new_user_registration_path, class: "btn btn-warning btn-block mb-3" %>
+          <%= f.submit "管理者ログイン", class: 'btn btn-warning btn-block' %>
+          <%= link_to "管理者新規登録ボタンへ", new_admin_registration_path, class: "btn btn-warning btn-block mb-3" %>
         </div>
       <% end %>
-      </div>
     </div>
   </div>
 </div>
