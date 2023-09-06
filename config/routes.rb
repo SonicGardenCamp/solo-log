@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :admins
   get 'users/show'
   root "shops#index"
   devise_for :users, controllers: {
     registrations: "users/registrations",
     sessions: "users/sessions",
-    passwords: "users/passwords",
-    confirmations: "users/confirmations"
+  }
+  
+  devise_for :admins, controllers: {
+    sessions:      'admins/sessions',
   }
 
   get 'map/show_reviews', to: 'map#show_reviews'
