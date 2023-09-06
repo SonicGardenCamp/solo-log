@@ -18,8 +18,8 @@ def random_coordinates_in_japan
   min_longitude = 122.934570
   max_longitude = 153.986672
 
-  latitude = Faker::Number.between(from: min_latitude, to: max_latitude)
-  longitude = Faker::Number.between(from: min_longitude, to: max_longitude)
+  latitude = Faker::Number.between(from: min_latitude, to: max_latitude).round(6)
+  longitude = Faker::Number.between(from: min_longitude, to: max_longitude).round(6)
 
   return [latitude, longitude]
 end
