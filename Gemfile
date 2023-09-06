@@ -21,6 +21,7 @@ gem 'devise-i18n-views'
 gem "pg", "1.3.5"
 gem 'ransack'
 gem 'dotenv-rails'
+gem 'rmagick'
 
 group :production do
   gem 'mini_racer'

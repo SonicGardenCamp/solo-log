@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2023_09_06_025756) do
+=======
+ActiveRecord::Schema[7.0].define(version: 2023_09_06_011942) do
+>>>>>>> 76f201f7cc9eb540ec3c64ec381d9c625fa7866c
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -65,7 +69,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_06_025756) do
     t.datetime "updated_at", null: false
     t.string "image"
     t.float "rate", default: 0.0
-    t.string "image_url"
   end
 
   create_table "users", force: :cascade do |t|
