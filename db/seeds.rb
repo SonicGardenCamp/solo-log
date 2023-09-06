@@ -65,8 +65,3 @@ Shop.all.each do |shop|
     review.save!
   end
 end
-
-Admin.create!(
-   email: 'admin@admin',
-   password: 'adminadmin'
-)
