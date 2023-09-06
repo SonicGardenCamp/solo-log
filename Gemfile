@@ -22,6 +22,7 @@ gem "pg", "1.3.5"
 gem 'ransack'
 gem 'dotenv-rails'
 gem 'rmagick'
+gem "gon"
 
 group :production do
   gem 'mini_racer'
