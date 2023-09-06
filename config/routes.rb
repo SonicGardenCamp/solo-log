@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     confirmations: "users/confirmations"
   }
 
-  get 'map/show_reviews', to: 'map#show_reviews'
+  get 'map/show_shops', to: 'map#show_shops'
   
   resources :shops,          only: [:index, :show] do
     resources :reviews,        only: [:index, :new, :create, :show, :destroy, :edit, :update], shallow: true
