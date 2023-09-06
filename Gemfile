@@ -20,6 +20,7 @@ gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem "pg", "1.3.5"
 gem 'ransack'
+gem 'dotenv-rails'
 
 group :production do
   gem 'mini_racer'
