@@ -22,9 +22,6 @@
   </div>
 <% end %>
 
-
-
-
 <br>
 <h1><%= @review.shop.name %></h1>
 
@@ -35,17 +32,9 @@
 <%= image_tag @review.image.url, alt: "...", size: "400x400", class: "border" %>
 
 <br><br>
-<div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-labl">コメント</label>
-  <textarea class="w-50 form-control" id="reviewComment" rows="4" readonly><%= @review.comment %></textarea>
-</div>
 
 <%= form_with(model: @review, method: :GET, url: review_path(@review)) do |f| %>
 
-  <!-- ↓仮の画像を表示↓ -->
-  <img src="https://rocketnews24.com/wp-content/uploads/sites/2/2020/04/hsawayaka1.jpg?resize=1536,1279" width="300" height="200">
-  <br><br>
-  <!-- ↑仮の画像を表示↑ -->
   <div class="form-group">
     <%= f.label :comment, "コメント" %>
     <br>

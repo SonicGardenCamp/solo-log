@@ -1,6 +1,30 @@
 <br>
 <h1 style="font-size: 26px;">名前 : <%= @user.name %></h1>
 <br>
+<% if user_signed_in? %>
+  <br>
+  <div class="card" style="width: 25rem;"> 
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="flex-grow-1">
+          <%= turbo_frame_tag "user_name", class: "user-name-in-review" do %>
+            <%= link_to @review.user.name, user_path(@review.user), style: "text-decoration: none; color: black; white-space: nowrap;" %>
+          <% end %>
+        </div>
+        <div>
+          <%= turbo_frame_tag "follow_button", class: (current_user.following?(@review.user) ? "unfollow-btn" : "follow-btn") do %>
+            <% if current_user.following?(@review.user) %>
+              <%= render 'relationships/unfollow', locals: { user: @review.user } %>
+            <% else %>
+              <%= render 'relationships/follow', locals: { user: @review.user } %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
 <div class="stats">
   <a href="<%= following_user_path(@user) %>" style="text-decoration: none; color: black;">
     <strong id="following" class="stat">
@@ -14,18 +38,6 @@
     </strong>
     followers
   </a>
-</div>
-
-<div id ="follow_button_container11">
-  <% if user_signed_in? && current_user != @user%>
-    <%= turbo_frame_tag "follow_button" do %>
-      <% if current_user.following?(@user) %>
-        <%= render 'relationships/unfollow', locals: { user: @user } %>
-      <% else %>
-        <%= render 'relationships/follow', locals: { user: @user} %>
-      <% end %>
-    <% end %>
-  <% end %>
 </div>
 
 <br><br>
