@@ -9,12 +9,16 @@
         <div class="navbar-nav">
           <% if user_signed_in? %>
             <%= link_to 'ホーム', root_path, method: :get, class: "nav-link" %>
-            <button type="button" class="btn btn-warning nav-link text-start" data-bs-toggle="modal" data-bs-target="#logoutModal">
+            <button type="button" class="btn btn-warning nav-link text-start" data-bs-toggle="modal" data-bs-target="#userLogoutModal">
               ログアウト
             </button>
-            <%= render 'layouts/logout_modal' %>
+            <%= render 'layouts/user_logout_modal' %>
           <% elsif admin_signed_in? %>
-            <%= link_to '管理画面ログアウト', destroy_admin_session_path, method: :get, class: "nav-link" %>
+            <%= link_to '店舗作成', new_admins_shop_path, method: :get, class: "nav-link" %>
+            <button type="button" class="btn btn-warning nav-link text-start" data-bs-toggle="modal" data-bs-target="#adminLogoutModal">
+              管理画面ログアウト
+            </button>
+            <%= render 'layouts/admin_logout_modal' %>
           <% else %>
             <%= link_to '新規登録', new_user_registration_path, method: :get, class: "nav-link" %>
             <%= link_to 'ログイン', new_user_session_path, method: :get, class: "nav-link" %>
