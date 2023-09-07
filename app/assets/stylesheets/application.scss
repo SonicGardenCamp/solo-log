@@ -13,7 +13,6 @@ input[type="checkbox"][readonly] {
 
 /* 全体 */
 body {
- padding-top: 70px;
  display: flex;
  flex-direction: column;
  min-height: 100vh;
@@ -32,30 +31,23 @@ body {
  margin-top: 30px;
 }
 
-/*ヘッダー*/
-.header {
- position  : fixed;
- top       : 0;
- height    : 50px;
- width     : 100%;
- background-color: #FFCC00;
- z-index   : 1000;
-}
 
 /*フッター*/
+footer {
+ margin-top: auto;
+}
+
 .footer {
- width: 100%;
- height: 50px;
- background: #FFCC00;
- display: flex;
- justify-content: center;
- align-items: center;
+  height: 50px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer p {
- font-size: 15px;
- margin: 0;
- color: black;
+  font-size: 15px;
+  margin: 0;
 }
 
 /* ユーザー新規登録ページ */
