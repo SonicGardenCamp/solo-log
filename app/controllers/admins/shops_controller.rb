@@ -1,4 +1,6 @@
 class Admins::ShopsController < ApplicationController
+  before_action :authenticate_admin!
+
   def new
     @shop = Shop.new
   end
@@ -16,6 +18,6 @@ class Admins::ShopsController < ApplicationController
   end
   
   def shop_params
-    params.require(:shop).permit(:name, :image, :address)
+    params.require(:shop).permit(:name, :image, :address, :genre)
   end
 end
