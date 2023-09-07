@@ -1,0 +1,17 @@
+<!-- ログアウトのモーダル -->
+<div class="modal fade" id="adminLogoutModal" tabindex="-1" aria-labelledby="adminLogoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>本当に管理者アカウントからログアウトしますか？</p>
+      </div>
+      <div class="modal-footer">
+        <%= button_to 'ログアウト', destroy_admin_session_path, method: :get, class: "btn btn-primary" %>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>

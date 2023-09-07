@@ -38,6 +38,8 @@
     </div>
   </div>
 <% end %>
+
+<%= paginate @shops %>
 <div class="container">
   <div class="row row-eq-height" >
     <% @shops.each_with_index do |shop, index| %>

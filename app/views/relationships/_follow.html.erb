@@ -5,5 +5,5 @@
   <% elsif @user.present? %>
     <%= form.hidden_field :followed_id, value: @user.id %>
   <% end %>
-  <%= form.submit "Follow" %>
+  <%= form.submit "フォロー", class: "follow-submit-button" %>
 <% end %>
