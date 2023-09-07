@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import "rating_star";
 
 select[readonly] {
  pointer-events: none;
@@ -107,7 +108,7 @@ footer {
 /* review詳細ページ */
 .form-control-review-comment{
  width: 450px;
- height: 120px; 
+ height: 120px;
 }
 .user-name-in-review{
  font-weight: bold;
@@ -130,7 +131,7 @@ footer {
 /* 共通のボタンスタイル */
 .follow-btn, .unfollow-btn {
  float: right;
- font-weight: bold; 
+ font-weight: bold;
  padding: 5px 16px;
  border-radius: 20px;
  cursor: pointer;
@@ -175,6 +176,5 @@ footer {
  right: 0;
  top: 50%;
  transform: translateY(-50%);
- margin-right: 50px; 
+ margin-right: 50px;
 }
-
