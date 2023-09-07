@@ -36,8 +36,7 @@ FROM base as build
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential libpq-dev pkg-config
-  
+    apt-get install --no-install-recommends -y build-essential libpq-dev pkg-config libmagickwand-dev  
 
 # Build options
 ENV PATH="/usr/local/node/bin:$PATH"
