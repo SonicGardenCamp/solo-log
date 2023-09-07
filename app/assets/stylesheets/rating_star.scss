@@ -1,0 +1,22 @@
+.star-rate > input {
+  display: none;
+}
+
+.star-rate > label {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+}
+
+.star-rate > label:before {
+  position: absolute;
+  content:'\2605';
+  font-size: 30px;
+  color: gray
+}
+
+.star-rate {
+  &.checked-star label:before {
+    color: yellow;
+  }
+}
