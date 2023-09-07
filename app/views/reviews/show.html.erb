@@ -41,88 +41,87 @@
 <h10>住所: <%= @review.shop.address %></h10>
 <br><br>
 
-<%= image_tag @review.image.url, alt: "...", size: "400x400", class: "border" %>
+  <h3 style="margin: 15px 0;">住所: <%= @review.shop.address %></h3>
 
-<br><br>
 
-<%= form_with(model: @review, method: :GET, url: review_path(@review)) do |f| %>
+  <%= image_tag @review.image.url, alt: "...", size: "400x400", class: "border" %>
 
-  <div class="form-group">
-    <%= f.label :comment, "コメント" %>
-    <br>
-    <%= f.text_area :comment, class: "form-control-review-comment", disabled: true%>
+  <br><br>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-labl">コメント</label>
+    <textarea class="w-50 form-control" id="reviewComment" rows="4" readonly><%= @review.comment %></textarea>
   </div>
-  <br>
-    
-  <div class="form-group">
-    <%= f.label :counter_sheets_available, "カウンター席があるかどうか" %>
-    <br>
-    <div class="form-check form-check-inline">
-      <%= f.radio_button :counter_sheets_available, 1, @review.counter_sheets_available == true ? { checked: true, readonly: true } : { readonly: true }%>
-      <%= f.label :counter_sheets_available, 'ある', value: 1, class: "form-check-label" %>
+
+  <%= form_with(model: @review, method: :GET, url: review_path(@review)) do |f| %>
+    <div class="form-group">
+      <%= f.label :counter_sheets_available, "カウンター席があるかどうか" %>
+      <br>
+      <div class="form-check form-check-inline">
+        <%= f.radio_button :counter_sheets_available, 1, @review.counter_sheets_available == true ? { checked: true, readonly: true } : { readonly: true }%>
+        <%= f.label :counter_sheets_available, 'ある', value: 1, class: "form-check-label" %>
+      </div>
+      <div class="form-check form-check-inline">
+        <%= f.radio_button :counter_sheets_available, 0, @review.counter_sheets_available == false ? { checked: true, readonly: true } : { readonly: true }%>
+        <%= f.label :counter_sheets_available, 'なし', value: 0, class: "form-check-label" %>
+      </div>
     </div>
-    <div class="form-check form-check-inline">
-      <%= f.radio_button :counter_sheets_available, 0, @review.counter_sheets_available == false ? { checked: true, readonly: true } : { readonly: true }%>
-      <%= f.label :counter_sheets_available, 'なし', value: 0, class: "form-check-label" %>
+    <br>
+
+    <div class="form-group">
+      <%= f.label :solo_tables_available, "ひとり用のテーブル席があるかどうか" %>
+      <br>
+      <div class="form-check form-check-inline">
+        <%= f.radio_button :solo_tables_available, 1, @review.solo_tables_available == true ? { checked: true, readonly: true } : { readonly: true }%>
+        <%= f.label :solo_tables_available, 'ある', value: 1, class: "form-check-label" %>
+      </div>
+      <div class="form-check form-check-inline">
+        <%= f.radio_button :solo_tables_available, 0, @review.solo_tables_available == false ? { checked: true, readonly: true } : { readonly: true }%>
+        <%= f.label :solo_tables_available, 'なし', value: 0, class: "form-check-label" %>
+      </div>
     </div>
-  </div>
-  <br>
-
-  <div class="form-group">
-    <%= f.label :solo_tables_available, "ひとり用のテーブル席があるかどうか" %>
     <br>
-    <div class="form-check form-check-inline">
-      <%= f.radio_button :solo_tables_available, 1, @review.solo_tables_available == true ? { checked: true, readonly: true } : { readonly: true }%>
-      <%= f.label :solo_tables_available, 'ある', value: 1, class: "form-check-label" %>
+
+    <div class="form-group">
+      <%= f.label :frequent_solo_visitors, "ひとり客の利用が多いかどうか" %>
+      <br>
+      <% for button_num in (1..5) do %>
+        <%= f.radio_button :frequent_solo_visitors, button_num, checked: @review.frequent_solo_visitors == button_num, readonly: true%>
+        <%= f.label :frequent_solo_visitors, value: button_num %>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--　←ボタン間にスペースをつくるための処理-->
+      <% end %>
     </div>
-    <div class="form-check form-check-inline">
-      <%= f.radio_button :solo_tables_available, 0, @review.solo_tables_available == false ? { checked: true, readonly: true } : { readonly: true }%>
-      <%= f.label :solo_tables_available, 'なし', value: 0, class: "form-check-label" %>
+    <br>
+
+    <div class="form-group">
+      <%= f.label :frequent_solo_visitors, "注文がしやすいかどうか" %>
+      <br>
+      <% for button_num in (1..5) do %>
+        <%= f.radio_button :easy_to_order, button_num, checked: @review.easy_to_order == button_num, readonly: true %>
+        <%= f.label :easy_to_order, value: button_num %>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--　←ボタン間にスペースをつくるための処理-->
+      <% end %>
     </div>
-  </div>
-  <br>
-
-  <div class="form-group">
-    <%= f.label :frequent_solo_visitors, "ひとり客の利用が多いかどうか" %>
     <br>
-    <% for button_num in (1..5) do %>
-      <%= f.radio_button :frequent_solo_visitors, button_num, checked: @review.frequent_solo_visitors == button_num, readonly: true%>
-      <%= f.label :frequent_solo_visitors, value: button_num %>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--　←ボタン間にスペースをつくるための処理-->
-    <% end %>
-  </div>
-  <br>
 
-  <div class="form-group">
-    <%= f.label :frequent_solo_visitors, "注文がしやすいかどうか" %>
+    <div class="form-group">
+      <%= f.label :delivery_speed, "商品の提供スピードは速いかどうか" %>
+      <br>
+      <% for button_num in (1..5) do %>
+        <%= f.radio_button :delivery_speed, button_num, checked: @review.delivery_speed == button_num, readonly: true %>
+        <%= f.label :delivery_speed, value: button_num %>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--　←ボタン間にスペースをつくるための処理-->
+      <% end %>
+    </div>
     <br>
-    <% for button_num in (1..5) do %>
-      <%= f.radio_button :easy_to_order, button_num, checked: @review.easy_to_order == button_num, readonly: true %>
-      <%= f.label :easy_to_order, value: button_num %>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--　←ボタン間にスペースをつくるための処理-->
-    <% end %>
-  </div>
-  <br>
 
-  <div class="form-group">
-    <%= f.label :delivery_speed, "商品の提供スピードは速いかどうか" %>
-    <br>
-    <% for button_num in (1..5) do %>
-      <%= f.radio_button :delivery_speed, button_num, checked: @review.delivery_speed == button_num, readonly: true %>
-      <%= f.label :delivery_speed, value: button_num %>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--　←ボタン間にスペースをつくるための処理-->
-    <% end %>
-  </div>
-  <br>
-
-  <div class="form-group">
-    <%= f.label :delivery_speed, "店内の雰囲気は良いかどうか" %>
-    <br>
-    <% for button_num in (1..5) do %>
-      <%= f.radio_button :calmness, button_num, checked: @review.calmness == button_num, readonly: true %>
-      <%= f.label :calmness, value: button_num %>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--　←ボタン間にスペースをつくるための処理-->
-    <% end %>
-  </div>
-  <br>
-<% end %>
+    <div class="form-group">
+      <%= f.label :delivery_speed, "店内の雰囲気は良いかどうか" %>
+      <br>
+      <% for button_num in (1..5) do %>
+        <%= f.radio_button :calmness, button_num, checked: @review.calmness == button_num, readonly: true %>
+        <%= f.label :calmness, value: button_num %>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--　←ボタン間にスペースをつくるための処理-->
+      <% end %>
+    </div>
+  <% end %>
+<div class="container">
