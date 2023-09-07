@@ -1,20 +1,15 @@
-<div class="container">
-  <%= stylesheet_link_tag 'index' %>
-  
-  <h1>All shops</h1>
-  
-  <h2>検索条件</h2>
-  <%#= search_form_for @q, url: shops_path do |f| %>
-    <%#= f.label :name, 'お店の名前' %>
-    <%#= f.search_field :name_cont %>
-    <%#= f.submit '検索' %>
-  <%# end %>
-  <%= form_with model: @q, url: shops_path, method: :get do |f| %>
-    <div class="row mb-5">
-      <div class="col-4">
-        <%= f.label :name, 'お店の名前' %>
-        <%= f.search_field :name_cont %>
-      </div>
+<%= stylesheet_link_tag 'index' %>
+
+<h1 style="margin: 15px 0;">All shops</h1>
+
+<h2 style="margin: 15px 0;">検索条件</h2>
+
+<%= form_with model: @q, url: shops_path, method: :get do |f| %>
+  <div class="row mb-5">
+    <div class="col-4">
+      <%= f.label :name, 'お店の名前' %>
+      <%= f.search_field :name_cont %>
+    </div>
       <div class="col-6">
         <ul class="list-group list-group-horizontal">
           <li class="list-group-item active">
@@ -34,25 +29,24 @@
           </li>
         </ul>
       </div>
-      <div class="col-2">
-        <%= f.submit '検索', class: 'btn btn-primary' %>
-      </div>
+    <div class="col-2">
+      <%= f.submit '検索', class: 'btn btn-primary' %>
     </div>
-  <% end %>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
-      <% @shops.each_with_index do |shop, index| %>
-        <div class="col">
-          <%= link_to shop_path(shop) do %>
-            <div class="card h-100">
-              <%= image_tag shop.image.url, class: "card-img-top", alt: "", size: "" %>
-              <div class="card-body">
-                <h5 class="card-title">店名：<%= shop.name %></h5>
-                <h5 class="card-title">平均評価：<%= shop.reviews.average(:rate) %></h5>
-                <p class="card-text">住所：<%= shop.address %></p>
-              </div>
-            </div>
-          <% end %>
+  </div>
+<% end %>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+  <% @shops.each_with_index do |shop, index| %>
+    <div class="col">
+      <%= link_to shop_path(shop) do %>
+        <div class="card h-100">
+          <%= image_tag shop.image.url, class: "card-img-top", alt: "", size: "" %>
+          <div class="card-body">
+            <h5 style="margin: 15px 0;" class="card-title">店名：<%= shop.name %></h5>
+            <h5 style="margin: 15px 0;" class="card-title">平均評価：<%= shop.reviews.average(:rate) %></h5>
+            <p style="margin: 15px 0;" class="card-text">住所：<%= shop.address %></p>
+          </div>
         </div>
       <% end %>
     </div>
+  <% end %>
 </div>
