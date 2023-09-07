@@ -23,6 +23,7 @@ gem 'ransack'
 gem 'dotenv-rails'
 gem 'rmagick'
 gem "gon"
+gem 'enumerize'
 
 group :production do
   gem 'mini_racer'
