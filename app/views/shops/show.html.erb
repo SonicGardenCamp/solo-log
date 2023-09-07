@@ -1,4 +1,3 @@
-<br><br>
 <div class="col-md-8">
   <h1>店名：<%= @shop.name %></h1>
 </div>
@@ -11,7 +10,7 @@
   <h5>投稿件数： <%= @reviews.count %>件</h5>
 </div>
 
-<!--ページ幅に合わせてカードの列数を減少させる-->
+<!-- ↓↓↓ページ幅に合わせてカードの列数を減少させる↓↓↓ -->
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
   <div class="col">
     <div class="card h-100">
@@ -29,15 +28,13 @@
         <div class="card-body">
           <h5 class="card-title">評価：<%= review.rate %></h5>
           <p class="card-text">コメント：<%= review.comment %></p>
-
-          <!--モーダルのトリガーボタン-->
+          <!-- ↓↓↓モーダルのトリガーボタン↓↓↓ -->
           <% if current_user && current_user.id == review.user_id %>
             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="<%= "#review_modal_#{review.id}" %>">
               削除
             </button>
           <% end %>
-
-          <!--モーダルの実装-->
+          <!-- ↓↓↓モーダルの実装↓↓↓ -->
           <div class="modal fade" id="<%= "review_modal_#{review.id}" %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -55,15 +52,12 @@
               </div>
             </div>
           </div>
-
-          <!--編集ボタン & editページへの遷移-->
+          <!-- ↓↓↓編集ボタン & editページへの遷移↓↓↓ -->
           <% if current_user && current_user.id == review.user_id %>
             <%= link_to "編集", edit_review_path(review), class: "btn btn-primary" %>
           <% end %>
-
         </div>
       </div>
     </div>
   <% end %>
 </div>
-<br><br>

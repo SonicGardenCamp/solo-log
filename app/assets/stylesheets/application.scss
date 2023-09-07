@@ -12,16 +12,17 @@ input[type="checkbox"][readonly] {
 
 /* 全体 */
 body {
+ padding-top: 70px;
  display: flex;
  flex-direction: column;
  min-height: 100vh;
 }
 
 .field_with_errors {
-  display: contents;
-  input, textarea {
-   @extend .is-invalid;
-  }
+ display: contents;
+ input, textarea {
+  @extend .is-invalid;
+ }
 }
 
 /* flash */
@@ -30,39 +31,48 @@ body {
  margin-top: 30px;
 }
 
-/*フッター*/
-footer {
- margin-top: auto;
+/*ヘッダー*/
+.header {
+ position  : fixed;
+ top       : 0;
+ height    : 50px;
+ width     : 100%;
+ background-color: #FFCC00;
+ z-index   : 1000;
 }
 
+/*フッター*/
 .footer {
-  height: 50px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+ width: 100%;
+ height: 50px;
+ margin-top: 50px;
+ background: #FFCC00;
+ display: flex;
+ justify-content: center;
+ align-items: center;
 }
 
 .footer p {
-  font-size: 15px;
-  margin: 0;
+ font-size: 15px;
+ margin: 0;
+ color: black;
 }
 
 /* ユーザー新規登録ページ */
 .signup-form {
- margin-top: 40px;
+ margin-top    : 40px;
  padding-bottom: 40px;
 }
 
 /* ユーザーログインページ */
 .login-form {
- padding-top: 40px;
+ padding-top   : 40px;
  padding-bottom: 40px;
 }
 
 /* review投稿ページ */
 .review-form {
- padding-top: 40px;
+ padding-top   : 40px;
  padding-bottom: 40px;
 }
 
@@ -80,13 +90,13 @@ footer {
 
 /* review詳細ページ */
 .form-control-review-indetail{
- width: 450px;
- height: 120px; 
+ width : 450px;
+ height: 120px;
 }
 
 /* mapページ */
 .shop-index-title {
- margin-top: 40px;
+ margin-top   : 40px;
  margin-bottom: 40px;
 }
 
