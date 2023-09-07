@@ -1,144 +1,105 @@
-<div class="d-grid gap-2 col-6 mx-auto text-center" >
-  <h1>レビューを編集する</h1>
-</div>
-<br><br>
+<div class="review-edit">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h2 class ="review-edit-title text-center">レビューを編集する</h2>
+      
+      <%= form_with(model: @review, method: :patch, url: review_path(@review), multipart: true) do |f| %>
+        <%= render 'layouts/validation_errors', model: @review %>
 
-<div class="col-md-6 offset-md-3">
-  <%= form_with(model: @review, method: :patch, url: review_path(@review), multipart: true) do |f| %>
-    <%= render 'layouts/validation_errors', model: @review %>
-
-    <div class="form-group">
-      <%= f.label :rate, "このお店に星をつける" %>
-      <br><br>
-      <% 5.times do |i| %>
-        <%= f.radio_button :rate, i + 1, checked: @review.rate == i + 1 %>
-        <%= f.label :rate, value: i + 1 %>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <% end %>
-    </div>
-    <br><br>
-
-    <div class="form-group">
-      <%= f.label :image, "写真を投稿する" %>
-      <br><br>
-      <% if @review.image.present? %>
-        <p>現在投稿されている写真</p>
-        <%= image_tag @review.image.url, alt: "...", size: "120x100", class: "border" %>
-      <% end %>
-      <br><br>
-      <p>新しい写真を選ぶ</p>
-      <%= f.file_field :image, class: "form-control" %>
-    </div>
-    <br><br>
-
-
-    <div class="form-group">
-      <%= f.label :comment, "感想を書く" %>
-      <br><br>
-      <%= f.text_area :comment, class: "form-control" %>
-    </div>
-    <br><br>
-
-
-    <div class="form-group">
-      <%= f.label :counter_sheets_available, "カウンター席があるかどうか" %>
-      <br><br>
-    <div>
-      <%= f.radio_button :counter_sheets_available, 1, checked: @review.counter_sheets_available == 1 %>
-      <%= f.label :counter_sheets_available, 'ある', value: 1 %>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <%= f.radio_button :counter_sheets_available, 0, checked: @review.counter_sheets_available == 0 %>
-      <%= f.label :counter_sheets_available, 'なし', value: 0 %>
-    </div>
-    <br><br>
-
-
-    <div class="form-group">
-      <%= f.label :solo_tables_available, "ひとり用のテーブル席があるかどうか" %>
-      <br><br>
-    <div>
-      <%= f.radio_button :solo_tables_available, 1, checked: @review.solo_tables_available == 1 %>
-      <%= f.label :solo_tables_available, 'ある', value:  1 %>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <%= f.radio_button :solo_tables_available, 0, checked: @review.solo_tables_available == 0 %>
-      <%= f.label :solo_tables_available, 'なし', value: 0 %>
-    </div>
-    <br><br>
-
-    <div class="form-group">
-      <%= f.label :frequent_solo_visitors, "ひとり客の利用が多いかどうか" %>
-      <br><br>
-      <% 5.times do |i| %>
-        <%= f.radio_button :frequent_solo_visitors, i + 1, checked: @review.frequent_solo_visitors == i + 1 %>
-        <%= f.label :frequent_solo_visitors, value: i + 1 %>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <% end %>
-    </div>
-    <br><br>
-
-    <div class="form-group">
-      <%= f.label :easy_to_order, "注文がしやすいかどうか" %>
-      <br><br>
-      <% 5.times do |i| %>
-        <%= f.radio_button :easy_to_order, i + 1, checked: @review.easy_to_order == i + 1 %>
-        <%= f.label :easy_to_order, value: i + 1 %>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <% end %>
-    </div>
-    <br><br>
-
-    <div class="form-group">
-      <%= f.label :delivery_speed, "商品の提供スピードは速いかどうか" %>
-      <br><br>
-      <% 5.times do |i| %>
-        <%= f.radio_button :delivery_speed, i + 1, checked: @review.delivery_speed == i + 1 %>
-        <%= f.label :delivery_speed, value: i + 1 %>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <% end %>
-    </div>
-    <br><br>
-
-    <div class="form-group">
-      <%= f.label :calmness, "店内の雰囲気は良いかどうか" %>
-      <br><br>
-      <% 5.times do |i| %>
-        <%= f.radio_button :calmness, i + 1, checked: @review.calmness == i + 1 %>
-        <%= f.label :calmness, value: i + 1 %>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <% end %>
-    </div>
-    <br><br>
-    <br><br>
-
-    <div class="d-grid gap-2 col-6 mx-auto text-center">
-      <%= f.submit "レビューを更新する", class: "btn btn-primary btn-lg" %>
-    </div>
-    <br><br>
-  <% end %>
-      <!-- ↓↓↓モーダルのトリガーボタン↓↓↓ -->
-      <div class="d-grid gap-2 col-6 mx-auto text-center">
-        <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          レビューを削除する
-        </button>
-      </div>
-      <!--モーダルの実装-->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">削除しますか？</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="form-group mb-4">
+          <div>
+            <%= f.label :rate, "このお店に星をつける", class: "form-label" %>
+          </div>
+          <% (1..5).each do |rate| %>
+            <div class="form-check form-check-inline">
+              <%= f.radio_button :rate, rate %>
+              <%= f.label :rate, rate, class: "form-check-label" %>
             </div>
-            <div class="modal-body">
-              ＊削除したら元には戻せません
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
-              <%= button_to '削除する', review_path(@review), method: :delete, remote: true, data: { confirm: '削除しますか？' }, class: 'btn btn-danger' %>
-            </div>
+          <% end %>
+        </div>
+
+        <div class="form-group mb-4">
+          <%= f.label :image, "写真を投稿する", class: "form-label" %>
+          <%= f.file_field :image, class: "form-control" %>
+        </div>
+
+        <div class="form-group mb-4">
+          <%= f.label :comment, "感想を書く", class: "form-label"  %>
+          <%= f.text_area :comment, class: "form-control" %>
+        </div>
+
+        <div class="form-group mb-4">
+          <div>
+            <%= f.label :counter_sheets_available, "カウンター席があるか", class: "form-label" %>
+          </div>
+          <div class="form-check form-check-inline">
+            <%= f.radio_button :counter_sheets_available, '1' %>
+            <%= f.label :counter_sheets_available, 'ある', value: 1, class: "form-check-label" %>
+          </div>
+          <div class="form-check form-check-inline">
+            <%= f.radio_button :counter_sheets_available, '0' %>
+            <%= f.label :counter_sheets_available, 'なし', value: 0, class: "form-check-label" %>
           </div>
         </div>
-      </div>
+
+        <div class="form-group mb-4">
+          <div>
+            <%= f.label :solo_tables_available, "一人用の席があるか", class: "form-label" %>
+          </div>
+          <div class="form-check form-check-inline">
+            <%= f.radio_button :solo_tables_available, '1' %>
+            <%= f.label :solo_tables_available, 'ある', value:  1 %>
+          </div>
+          <div class="form-check form-check-inline">
+            <%= f.radio_button :solo_tables_available, '0' %>
+            <%= f.label :solo_tables_available, 'なし', value: 0 %>
+          </div>
+        </div>
+
+        <div class="form-group mb-4">
+          <div><%= f.label :frequent_solo_visitors, "一人客が多いか", class: "form-label" %></div>
+          <% (1..5).each do |frequent_solo_visitors| %>
+            <div class="form-check form-check-inline">
+              <%= f.radio_button :frequent_solo_visitors, frequent_solo_visitors %>
+              <%= f.label :frequent_solo_visitors, frequent_solo_visitors, class: "form-check-label" %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="form-group mb-4">
+          <div><%= f.label :easy_to_order, "注文しやすいか", class: "form-label" %></div>
+          <% (1..5).each do |easy_to_order| %>
+            <div class="form-check form-check-inline">
+              <%= f.radio_button :easy_to_order, easy_to_order %>
+              <%= f.label :easy_to_order, easy_to_order, class: "form-check-label" %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="form-group mb-4">
+          <div><%= f.label :delivery_speed, "料理の提供スピードが早いか", class: "form-label" %></div>
+          <% (1..5).each do |delivery_speed| %>
+            <div class="form-check form-check-inline">
+              <%= f.radio_button :delivery_speed, delivery_speed %>
+              <%= f.label :delivery_speed, delivery_speed, class: "form-check-label" %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="form-group mb-4">
+          <div><%= f.label :calmness, "店内が落ち着いているか", class: "form-label" %></div>
+          <% (1..5).each do |calmness| %>
+            <div class="form-check form-check-inline">
+              <%= f.radio_button :calmness, calmness %>
+              <%= f.label :calmness, calmness, class: "form-check-label" %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="actions d-grid gap-3">
+          <%= f.submit "編集する", class: "btn btn-warning btn-block" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
-<br><br>
