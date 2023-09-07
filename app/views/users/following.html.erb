@@ -1,8 +1,16 @@
-<h1>フォロー一覧</h1>
-
-<ul>
-  <% @users.each do |user| %>
-    <li><a href="<%= user_path(user) %>" style="text-decoration: none; color: black;"><%= user.name %></a></li>
-    <br>
+<h1>Followiing</h1>
+<br>
+<% @users.each do |user| %>
+  <%= link_to user_path(user), style: "text-decoration: none; color: black;", class: "card-anchor" do %>
+    <div class="card text-center" style="width: 26rem; height: 6rem;">
+      <div class="card-body d-flex align-items-center justify-content-between"> 
+        <%= turbo_frame_tag "user_name", class: "user-name-in-review" do %>
+          <%= user.name %>
+        <% end %>
+        <div class="review-count">
+          <%= user.reviews.count %> reviews
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+<% end %>
