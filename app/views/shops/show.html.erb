@@ -8,9 +8,11 @@
 </div>
 
 <div class="col-md-8">
-  <h5>投稿件数： <%= @reviews.count %>件</h5>
+  <h5>投稿件数： <%= @total_reviews_count %>件</h5>
 </div>
 
+<br>
+<%= paginate @reviews %>
 <!--ページ幅に合わせてカードの列数を減少させる-->
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
   <div class="col">
