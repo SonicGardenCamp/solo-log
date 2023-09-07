@@ -24,6 +24,8 @@ gem 'dotenv-rails'
 gem 'rmagick'
 gem "gon"
 gem 'enumerize'
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'
 
 group :production do
   gem 'mini_racer'
