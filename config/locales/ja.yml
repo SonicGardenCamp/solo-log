@@ -2,4 +2,17 @@ ja:
   activerecord:
     attributes:
       user:
-        name: 名前
+        name: "名前"
+      shop:
+        name: "店舗名"
+        address: "住所"
+        genre: "ジャンル"
+  enumerize:
+    shop:
+      genre:
+        japanese_food: "和食"
+        western_food: "洋食"
+        chinese_food: "中華"
+        italian_food: "イタリアン"
+        pub: "居酒屋"
+        bar: "バー"

@@ -1,4 +1,5 @@
 class Shop < ApplicationRecord
+  extend Enumerize
   has_many :reviews
   mount_uploader :image, ImageUploader
   validates :name, presence: true, length: { maximum: 60 }
@@ -6,7 +7,8 @@ class Shop < ApplicationRecord
   validates :latitude, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90, allow_blank: true }
   validates :longitude, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180, allow_blank: true }
   #後で変更する
-  validates :genre, length: { maximum: 50 }
+  validates :genre, presence: true
+  enumerize :genre, in: [:japanese_food, :western_food, :chinese_food, :italian_food, :pub, :bar]
 
   scope :sort_by_highest_rate, -> { group(:review_id).count }
 

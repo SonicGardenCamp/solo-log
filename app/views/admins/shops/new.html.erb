@@ -23,7 +23,7 @@
         
         <div class="form-group mb-4">
           <%= f.label :genre, "ジャンル", class: "form-label" %><br />
-          <%= f.select :genre, [["和食", "和食"], ["洋食", "洋食"], ["中華", "中華"], ["イタリアン", "イタリアン"], ["居酒屋", "居酒屋"], ["バー", "バー"]], include_blank: "ジャンルを選択して下さい" %>
+          <%= f.select :genre, Shop.genre.options, include_blank: "ジャンルを選択して下さい" %>
         </div>
         
         <div class="actions d-grid">
