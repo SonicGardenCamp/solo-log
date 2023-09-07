@@ -25,6 +25,15 @@ body {
  }
 }
 
+/* container */
+.container {
+ width: 100%;
+ max-width: auto;
+ margin-right: auto;
+ margin-left: auto;
+}
+
+
 /* flash */
 .validation-error-list {
  list-style-position: inside;
@@ -45,7 +54,6 @@ body {
 .footer {
  width: 100%;
  height: 50px;
- margin-top: 50px;
  background: #FFCC00;
  display: flex;
  justify-content: center;
@@ -102,4 +110,19 @@ body {
 
 .btn:focus {
   box-shadow: none !important;
+}
+
+a {
+ color: black;/* リンクの文字を黒色に */
+ text-decoration: none; /* リンクの下線を削除 */
+}
+
+a:hover {
+ color: #00f; /* カーソルを合わせると時に文字が青になる */
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 例: 影の設定 */
+  transform: translateY(-10px); /* 例: カードを上に少し浮き出す */
+  transition: 0.3s; /* アニメーションの速さを調整する場合に設定 */
 }
