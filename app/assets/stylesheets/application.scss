@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import "rating_star";
 
 select[readonly] {
  pointer-events: none;
@@ -87,6 +88,16 @@ body {
  margin-right: 2rem;
 }
 
+/* 店舗投稿ページ */
+.shop-form {
+ padding-top: 40px;
+ padding-bottom: 40px;
+}
+
+.shop-form-title {
+ margin-bottom: 20px;
+}
+
 /* review詳細ページ */
 .form-control-review-indetail{
  width : 450px;
@@ -116,4 +127,78 @@ a:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 例: 影の設定 */
   transform: translateY(-10px); /* 例: カードを上に少し浮き出す */
   transition: 0.3s; /* アニメーションの速さを調整する場合に設定 */
+}
+
+/* review詳細ページ */
+.form-control-review-comment{
+ width: 450px;
+ height: 120px;
+}
+.user-name-in-review{
+ font-weight: bold;
+}
+
+.box-border {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.shop-name-in-review {
+ font-family: 'Meiryo', sans-serif;
+ font-size: 35px;
+ font-weight: bold;
+ border-bottom:1px solid;
+ width: 600px;
+}
+
+
+/* 共通のボタンスタイル */
+.follow-btn, .unfollow-btn {
+ float: right;
+ font-weight: bold;
+ padding: 5px 16px;
+ border-radius: 20px;
+ cursor: pointer;
+ font-weight: bold;
+}
+
+/* フォローボタンのスタイル */
+.follow-btn {
+ border: none;
+ outline: none;
+ background-color: #1DA1F2;
+ color: #ffffff;
+}
+
+/* アンフォローボタンのスタイル */
+.unfollow-btn {
+ font-family: 'Helvetica Neue', Arial, sans-serif;
+ border: none;
+ outline: none;
+ background-color: #33CC00;
+ color: #ffffff;
+}
+
+.follow-submit-button {
+ color: white;
+ font-weight: bold;
+ border: none;
+ outline: none;
+ background-color: transparent;
+}
+
+.unfollow-submit-button{
+ color: white;
+ font-weight: bold;
+ border: none;
+ outline: none;
+ background-color: transparent;
+}
+
+.review-count-follow {
+ position: absolute;
+ right: 0;
+ top: 50%;
+ transform: translateY(-50%);
+ margin-right: 50px;
 }

@@ -1,7 +1,28 @@
 <br>
-<h1 style="font-size: 26px;">名前 : <%= @user.name %></h1>
-
-<div class="stats">
+<div class="card" style="width: 25rem; height: 5rem;"> 
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="flex-grow-1">
+        <%= turbo_frame_tag "user_name", class: "user-name-in-review" do %>
+          <%= link_to @user.name, user_path(@user), style: "text-decoration: none; color: black; white-space: nowrap;" %>
+        <% end %>
+      </div>
+      <div>
+        <% if user_signed_in? && current_user != @user %>
+          <%= turbo_frame_tag "follow_button", class: (current_user.following?(@user) ? "unfollow-btn" : "follow-btn") do %>
+            <% if current_user.following?(@user) %>
+              <%= render 'relationships/unfollow', locals: { user: @user } %>
+            <% else %>
+              <%= render 'relationships/follow', locals: { user: @user } %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="stats" style= "margin-left: 10px;">
   <a href="<%= following_user_path(@user) %>" style="text-decoration: none; color: black;">
     <strong id="following" class="stat">
       <%= @user.following.count %>
@@ -16,20 +37,13 @@
   </a>
 </div>
 
-<div id ="follow_button_container">
-  <% if user_signed_in? && current_user != @user%>
-    <%= turbo_frame_tag "follow_button" do %>
-      <% if current_user.following?(@user) %>
-        <%= render 'relationships/unfollow', locals: { user: @user } %>
-      <% else %>
-        <%= render 'relationships/follow', locals: { user: @user} %>
-      <% end %>
-    <% end %>
-  <% end %>
+<br><br>
+<div class="col-md-8">
+  <h5>投稿件数： <%= @total_reviews_count %>件</h5>
 </div>
 
-
 <br>
+<%= paginate @reviews %>
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
   <% @reviews.each do |review| %>
     <div class="col">
@@ -45,5 +59,4 @@
     </div>
   <% end %>
 </div>
-<br>
-<br>
+<br><br>

@@ -1,22 +1,48 @@
-<div class="container">
-  <% if user_signed_in? && @review.user.present? && current_user != @review.user%>
-    <%= turbo_frame_tag "user_name" do %>
-      <%= link_to @review.user.name, user_path(@review.user), style: "text-decoration: none; color: black;" %>
-    <% end %>
-    <%= turbo_frame_tag "follow_button" do %>
-      <% if current_user.following?(@review.user) %>
-        <%= render 'relationships/unfollow', locals: { user: @review.user } %>
-      <% else %>
-        <%= render 'relationships/follow', locals: { user: @review.user } %>
-      <% end %>
-    <% end %>
-  <% end %>
+<% if user_signed_in? && @review.user.present? && current_user != @review.user %>
+  <br>
+  <div class="card" style="width: 25rem; height: 5rem;" onclick="handleCardClick(event, '<%= user_path(@review.user) %>')"> 
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="flex-grow-1">
+          <%= turbo_frame_tag "user_name", class: "user-name-in-review" do %>
+            <%= link_to @review.user.name, user_path(@review.user), style: "text-decoration: none; color: black; white-space: nowrap;" %>
+          <% end %>
+        </div>
+        <div>
+          <%= turbo_frame_tag "follow_button", class: (current_user.following?(@review.user) ? "unfollow-btn" : "follow-btn") do %>
+            <% if current_user.following?(@review.user) %>
+              <%= render 'relationships/unfollow', locals: { user: @review.user } %>
+            <% else %>
+              <%= render 'relationships/follow', locals: { user: @review.user } %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
 
-  <h1 style="margin: 15px 0;">店名：<%= @review.shop.name %></h1>
+<script>
+  function handleCardClick(event, url) {
+    // イベントの伝播を止める
+    event.stopPropagation();
 
-  <h3 style="margin: 15px 0;">評価: <%= @review.rate%></h3>
+    // クリックした要素がフォローボタンやその子要素でなければリダイレクト
+    if (!event.target.closest('.follow-btn') && !event.target.closest('.unfollow-btn')) {
+      window.location.href = url;
+    }
+  }
+</script>
+
+<br>
+<h2 class="shop-name-in-review"><%= @review.shop.name %></h2>
+
+<h3>評価: <%= @review.rate%></h3>
+<h10>住所: <%= @review.shop.address %></h10>
+<br><br>
 
   <h3 style="margin: 15px 0;">住所: <%= @review.shop.address %></h3>
+
 
   <%= image_tag @review.image.url, alt: "...", size: "400x400", class: "border" %>
 

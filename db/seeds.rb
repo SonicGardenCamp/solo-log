@@ -24,13 +24,15 @@ def random_coordinates_in_japan
   return [latitude, longitude]
 end
 
+GENRES = ["japanese_food", "western_food", "chinese_food", "italian_food", "pub", "bar"]
+
 10.times do
   latitude, longitude = random_coordinates_in_japan
   shop = Shop.new(latitude: latitude,
                   longitude: longitude,
                   address: Faker::Address.full_address,
                   name: Faker::Lorem.sentence,
-                  genre: Faker::Food.ethnic_category)
+                  genre: GENRES.sample)
   shop.save!
 end
 

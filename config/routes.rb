@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     registrations: "admins/registrations",
     sessions:      'admins/sessions',
   }
+  
+  namespace :admins do
+    resources :shops
+  end
 
   get 'map/show_shops', to: 'map#show_shops'
   
