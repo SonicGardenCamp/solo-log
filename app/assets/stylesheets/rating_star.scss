@@ -20,3 +20,10 @@
     color: yellow;
   }
 }
+
+.star {
+  &:before {
+    content: '\2605';
+    color: #d8d847;
+  }
+}
