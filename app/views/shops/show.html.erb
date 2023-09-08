@@ -35,7 +35,7 @@
             <%= image_tag review.image.url, class: "card-img-top", alt: "", size: "" %>
           </a>
           <div class="card-body">
-            <h5 class="card-title">評価：<%= review.rate %></h5>
+            <h5 class="card-title show-star"><%= review.rate %></h5>
             <p class="card-text">コメント：<%= review.comment %></p>
             <!-- ↓↓↓モーダルのトリガーボタン↓↓↓ -->
             <% if current_user && current_user.id == review.user_id %>

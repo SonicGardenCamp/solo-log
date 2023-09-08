@@ -85,7 +85,7 @@
 
       <div class="form-group">
         <%= f.label :frequent_solo_visitors, "注文がしやすいかどうか" %>
-        <<h3 style="margin: 15px 0;" class="show-star <%=@review.id%>"><%= @review.easy_to_order %></h3>
+        <h3 style="margin: 15px 0;" class="show-star <%=@review.id%>"><%= @review.easy_to_order %></h3>
       </div>
       <br>
 
@@ -101,23 +101,5 @@
       </div>
     </div>
   </div>
+      <% end %>
 </div>
-
-<script>
-  window.onload = function onLoad() {
-    let html = ''
-    let rates = document.querySelectorAll('.show-star');
-    for (let i=0; i<rates.length; i++) {
-      let html = ""
-      let j=0;
-      for (; j<rates[i].innerText; j++) {
-        html += "<div class='star d-inline-block'></div>";
-      }
-      // debugger
-      if (rates[i].innerHTML-j > 0) {
-        html += "<div class='fa-solid fa-star-half-stroke'></div>"
-      }
-      rates[i].innerHTML = html;
-    }
-  }
-</script>
