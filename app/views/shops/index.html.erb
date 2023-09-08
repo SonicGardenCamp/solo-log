@@ -43,6 +43,12 @@
               <h5 style="margin: 15px 0;" class="card-title">店名：<%= shop.name %></h5>
               <h5 style="margin: 15px 0;" class="card-title">平均評価：<%= shop.reviews.average(:rate) %></h5>
               <p style="margin: 15px 0;" class="card-text">住所：<%= shop.address %></p>
+              <% if admin_signed_in? %>
+                <div class="shop-button">
+                  <%= button_to "店舗編集", edit_admins_shop_path(shop), class: "btn btn-primary", method: :get %>
+                  <%= button_to "店舗削除", admins_shop_path(shop), class: "btn btn-danger", method: :delete  %>
+                </div>
+              <% end %>
             </div>
           </div>
         <% end %>
