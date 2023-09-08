@@ -36,7 +36,7 @@
 <div class="review-details">
   <h2 style="margin: 15px 0;">店名：<%= @review.shop.name %></h2>
   <h3 style="margin: 15px 0;" class="show-star <%=@review.id%>"><%= @review.rate %></h3>
-  <h6 style="margin: 15px 0;">住所：<%= @review.shop.address %></h4>
+  <h6 style="margin: 15px 0;">住所：<%= @review.shop.address %></h6>
   <%= image_tag @review.image.url, alt: "...", size: "400x400", class: "border" %>
 </div>
 
