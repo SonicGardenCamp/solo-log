@@ -1,58 +1,56 @@
-<div class="shop-index">
-  <h2 class="text-center shop-index-title">飲食店一覧</h2>
+<h1 style="margin: 15px 0;">All shops</h1>
 
-  <h3 class="search-shop">検索条件</h2>
-
+  <h2 class="search-shop">検索条件</h2>
+  
   <%= form_with model: @q, url: shops_path, method: :get do |f| %>
     <div class="row mb-5">
       <div class="col-4">
-        <%= f.label :name, 'お店の名前' %>
-        <%= f.search_field :name_cont, placeholder: "店名やキーワードで検索"%> <!--placeholder:入力時に文字が消える機能-->
+        <%= f.search_field :name_cont %>
       </div>
-        <div class="col-6">
-          <ul class="list-group list-group-horizontal">
-            <li class="list-group-item active">
-              並び順<i class="fa-solid fa-arrow-down-wide-short"></i>
-            </li>
-            <li class="list-group-item">
-              <%= label_tag "sort_order_none", '指定なし' %>
-              <%= radio_button_tag "sort_order", "none", params[:sort_order] == 'none' || params[:sort_order].nil? %>
-            </li>
-            <li class="list-group-item">
-              <%= label_tag "sort_order_most_rating", '評価の多い順' %>
-              <%= radio_button_tag "sort_order", "most_rating", params[:sort_order] == 'most_rating' %>
-            </li>
-            <li class="list-group-item">
-              <%= label_tag "sort_order_highest_rating", '評価の高い順' %>
-              <%= radio_button_tag "sort_order", "highest_rating", params[:sort_order] == 'highest_rating' %>
-            </li>
-          </ul>
-        </div>
+<!--        <div class="col-6">-->
+<!--          <ul class="list-group list-group-horizontal">-->
+<!--            <li class="list-group-item active">-->
+<!--              並び順<i class="fa-solid fa-arrow-down-wide-short"></i>-->
+<!--            </li>-->
+<!--            <li class="list-group-item">-->
+              <%#= label_tag "sort_order_none", '指定なし' %>
+              <%#= radio_button_tag "sort_order", "none", params[:sort_order] == 'none' || params[:sort_order].nil? %>
+<!--            </li>-->
+<!--            <li class="list-group-item">-->
+              <%#= label_tag "sort_order_most_rating", '評価の多い順' %>
+              <%#= radio_button_tag "sort_order", "most_rating", params[:sort_order] == 'most_rating' %>
+<!--            </li>-->
+<!--            <li class="list-group-item">-->
+              <%#= label_tag "sort_order_highest_rating", '評価の高い順' %>
+              <%#= radio_button_tag "sort_order", "highest_rating", params[:sort_order] == 'highest_rating' %>
+<!--            </li>-->
+<!--          </ul>-->
+<!--        </div>-->
       <div class="col-2">
         <%= f.submit '検索', class: 'btn btn-primary' %>
       </div>
     </div>
   <% end %>
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
-    <% @shops.each_with_index do |shop, index| %>
-      <div class="col">
-        <%= link_to shop_path(shop) do %>
-          <div class="card h-100">
-            <%= image_tag shop.image.url, class: "card-img-top", alt: "", size: "" %>
-            <div class="card-body">
-              <h5 style="margin: 15px 0;" class="card-title">店名：<%= shop.name %></h5>
-              <h5 style="margin: 15px 0;" class="card-title">平均評価：<%= shop.reviews.average(:rate) %></h5>
-              <p style="margin: 15px 0;" class="card-text">住所：<%= shop.address %></p>
-              <% if admin_signed_in? %>
-                <div class="shop-button">
-                  <%= button_to "店舗編集", edit_admins_shop_path(shop), class: "btn btn-primary", method: :get %>
-                  <%= button_to "店舗削除", admins_shop_path(shop), class: "btn btn-danger", method: :delete  %>
-                </div>
-              <% end %>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+      <% @shops.each_with_index do |shop, index| %>
+        <div class="col">
+          <%= link_to shop_path(shop) do %>
+            <div class="card h-100">
+              <%= image_tag shop.image.url, class: "card-img-top", alt: "", size: "" %>
+              <div class="card-body">
+                <h5 style="margin: 15px 0;" class="card-title">店名：<%= shop.name %></h5>
+                <h5 style="margin: 15px 0;" class="card-title show-star"><%= shop.reviews.average(:rate) %></h5>
+                <p style="margin: 15px 0;" class="card-text">住所：<%= shop.address %></p>
+                <% if admin_signed_in? %>
+                  <div class="shop-button">
+                    <%= button_to "店舗編集", edit_admins_shop_path(shop), class: "btn btn-primary", method: :get %>
+                    <%= button_to "店舗削除", admins_shop_path(shop), class: "btn btn-danger", method: :delete  %>
+                  </div>
+                <% end %>
+              </div>
             </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
 </div>

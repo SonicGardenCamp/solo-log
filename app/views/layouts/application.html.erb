@@ -57,6 +57,28 @@
       }
     }
 
+    window.onload = function onLoad() {
+      let rates = document.querySelectorAll('.show-star');
+      for (let i=0; i<rates.length; i++) {
+        let html = ""
+        let j=0;
+        for (; j<Math.floor(rates[i].innerText); j++) {
+          html += "<div class='star d-inline-block'></div>";
+        }
+        // debugger
+        if (rates[i].innerHTML-j > 0) {
+          html += "<div class='fa-regular fa-star-half-stroke'></div>"
+          j++
+        }
+
+        for (;j<5; j++) {
+          html += "<div class='fa-regular fa-star'></div>";
+        }
+
+        rates[i].innerHTML = html;
+      }
+    }
+
   </script>
 
 </html>
