@@ -13,16 +13,17 @@ input[type="checkbox"][readonly] {
 
 /* 全体 */
 body {
+ padding-top: 70px;
  display: flex;
  flex-direction: column;
  min-height: 100vh;
 }
 
 .field_with_errors {
-  display: contents;
-  input, textarea {
-   @extend .is-invalid;
-  }
+ display: contents;
+ input, textarea {
+  @extend .is-invalid;
+ }
 }
 
 /* flash */
@@ -31,39 +32,47 @@ body {
  margin-top: 30px;
 }
 
-/*フッター*/
-footer {
- margin-top: auto;
+/*  header  */
+.header {
+ position  : fixed;
+ top       : 0;
+ width     : 100%;
+ height    : 50px;
+ background-color: #FFCC00;
+ z-index   : 1000;
 }
 
+/*  footer  */
 .footer {
-  height: 50px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+ width: 100%;
+ height: 50px;
+ background: #FFCC00;
+ display: flex;
+ justify-content: center;
+ align-items: center;
 }
 
 .footer p {
-  font-size: 15px;
-  margin: 0;
+ font-size: 15px;
+ margin: 0;
+ color: black;
 }
 
 /* ユーザー新規登録ページ */
 .signup-form {
- margin-top: 40px;
+ margin-top    : 40px;
  padding-bottom: 40px;
 }
 
 /* ユーザーログインページ */
 .login-form {
- padding-top: 40px;
+ padding-top   : 40px;
  padding-bottom: 40px;
 }
 
 /* review投稿ページ */
 .review-form {
- padding-top: 40px;
+ padding-top   : 40px;
  padding-bottom: 40px;
 }
 
@@ -91,18 +100,33 @@ footer {
 
 /* review詳細ページ */
 .form-control-review-indetail{
- width: 450px;
- height: 120px; 
+ width : 450px;
+ height: 120px;
 }
 
 /* mapページ */
 .shop-index-title {
- margin-top: 40px;
+ margin-top   : 40px;
  margin-bottom: 40px;
 }
 
 .btn:focus {
   box-shadow: none !important;
+}
+
+a {
+ color: black;/* リンクの文字を黒色に */
+ text-decoration: none; /* リンクの下線を削除 */
+}
+
+a:hover {
+ color: #00f; /* カーソルを合わせる時にリンク文字が青になる */
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 例: 影の設定 */
+  transform: translateY(-10px); /* 例: カードを上に少し浮き出す */
+  transition: 0.3s; /* アニメーションの速さを調整する場合に設定 */
 }
 
 /* review詳細ページ */
