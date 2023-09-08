@@ -37,7 +37,7 @@
 <br>
 <h2 class="shop-name-in-review"><%= @review.shop.name %></h2>
 
-<h3>評価: <%= @review.rate%></h3>
+<h3 class="show-star <%=@review.id%>"><%= @review.rate %></h3>
 <h10>住所: <%= @review.shop.address %></h10>
 <br><br>
 
@@ -126,3 +126,21 @@
   </div>
   <br>
 <% end %>
+
+<script>
+  window.onload = function onLoad() {
+    let rates = document.querySelectorAll('.show-star');
+    for (let i=0; i<rates.length; i++) {
+      let html = ""
+      for (let j=0; j<rates[i].innerText; j++) {
+        html += "<div class='star d-inline-block'></div>";
+      }
+      // debugger
+      // if (rates[i].innerHTML-j > 0) {
+      //   html += "<div class='half-star'>"
+      //   i += 1;
+      // }
+      rates[i].innerHTML = '評価:' + html;
+    }
+  }
+</script>

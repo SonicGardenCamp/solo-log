@@ -79,7 +79,7 @@
       <div class="form-group mb-4">
         <div><%= f.label :delivery_speed, "料理の提供スピードが早いか", class: "form-label" %></div>
         <% (1..5).each do |delivery_speed| %>
-          <div class="form-check form-check-inline">
+          <div class="form-check form-check-inline star-rate", onclick= "starRate(event)">
             <%= f.radio_button :delivery_speed, delivery_speed %>
             <%= f.label :delivery_speed, delivery_speed, class: "form-check-label" %>
           </div>
