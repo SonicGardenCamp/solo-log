@@ -11,6 +11,10 @@
     <p style="margin: 15px 0;">投稿件数： <%= @total_reviews_count %>件</p>
   </div>
   
+  <div class="col-md-8">
+    <p style="margin: 15px 0;">ジャンル： <%= genre(@shop.genre) %></p>
+  </div>
+  
   <br>
   <%= paginate @reviews %>
   <!--ページ幅に合わせてカードの列数を減少させる-->
