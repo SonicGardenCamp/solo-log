@@ -38,33 +38,36 @@
       <%= f.text_area :comment, class: "form-control" %>
     </div>
     <br><br>
-
-
+    <br><br>
+    
     <div class="form-group">
       <%= f.label :counter_sheets_available, "カウンター席があるかどうか" %>
       <br><br>
-    <div>
-      <%= f.radio_button :counter_sheets_available, 1, checked: @review.counter_sheets_available == 1 %>
-      <%= f.label :counter_sheets_available, 'ある', value: 1 %>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <%= f.radio_button :counter_sheets_available, 0, checked: @review.counter_sheets_available == 0 %>
-      <%= f.label :counter_sheets_available, 'なし', value: 0 %>
+      <div class="form-check form-check-inline">
+        <%= f.radio_button :counter_sheets_available, 1, checked: @review.counter_sheets_available == true %>
+        <%= f.label :counter_sheets_available, 'ある', value: 1, class: "form-check-label" %>
+      </div>
+      <div class="form-check form-check-inline">
+        <%= f.radio_button :counter_sheets_available, 0, checked: @review.counter_sheets_available == false %>
+        <%= f.label :counter_sheets_available, 'なし', value: 0, class: "form-check-label" %>
+      </div>
     </div>
-    <br><br>
-
-
+    <br>
+    
     <div class="form-group">
-      <%= f.label :solo_tables_available, "ひとり用のテーブル席があるかどうか" %>
+      <%= f.label :counter_sheets_available, "ひとり用のテーブル席があるかどうか" %>
       <br><br>
-    <div>
-      <%= f.radio_button :solo_tables_available, 1, checked: @review.solo_tables_available == 1 %>
-      <%= f.label :solo_tables_available, 'ある', value:  1 %>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <%= f.radio_button :solo_tables_available, 0, checked: @review.solo_tables_available == 0 %>
-      <%= f.label :solo_tables_available, 'なし', value: 0 %>
+      <div class="form-check form-check-inline">
+        <%= f.radio_button :solo_tables_available, 1, checked: @review.solo_tables_available == true %>
+        <%= f.label :solo_tables_available, 'ある', value: 1, class: "form-check-label" %>
+      </div>
+      <div class="form-check form-check-inline">
+        <%= f.radio_button :solo_tables_available, 0, checked: @review.solo_tables_available == false %>
+        <%= f.label :solo_tables_available, 'なし', value: 0, class: "form-check-label" %>
+      </div>
     </div>
-    <br><br>
-
+  
+    <br>
     <div class="form-group">
       <%= f.label :frequent_solo_visitors, "ひとり客の利用が多いかどうか" %>
       <br><br>
