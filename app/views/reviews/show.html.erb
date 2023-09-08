@@ -1,6 +1,5 @@
 <% if user_signed_in? && @review.user.present? && current_user != @review.user %>
-  <br>
-  <div class="card" style="width: 25rem; height: 5rem;" onclick="handleCardClick(event, '<%= user_path(@review.user) %>')"> 
+  <div class="card" style="width: 25rem; height: 5rem;" onclick="handleCardClick(event, '<%= user_path(@review.user) %>')">
     <div class="card-body">
       <div class="d-flex justify-content-between align-items-center">
         <div class="flex-grow-1">
@@ -124,3 +123,21 @@
     </div>
   </div>
 </div>
+
+<script>
+  window.onload = function onLoad() {
+    let rates = document.querySelectorAll('.show-star');
+    for (let i=0; i<rates.length; i++) {
+      let html = ""
+      for (let j=0; j<rates[i].innerText; j++) {
+        html += "<div class='star d-inline-block'></div>";
+      }
+      // debugger
+      // if (rates[i].innerHTML-j > 0) {
+      //   html += "<div class='half-star'>"
+      //   i += 1;
+      // }
+      rates[i].innerHTML = '評価:' + html;
+    }
+  }
+</script>
