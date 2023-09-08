@@ -2,12 +2,12 @@
   <h2 class="text-center shop-index-title">飲食店一覧</h2>
 
   <h3 class="search-shop">検索条件</h2>
-  
+
   <%= form_with model: @q, url: shops_path, method: :get do |f| %>
     <div class="row mb-5">
       <div class="col-4">
         <%= f.label :name, 'お店の名前' %>
-        <%= f.search_field :name_cont %>
+        <%= f.search_field :name_cont, placeholder: "店名やキーワードで検索"%> <!--placeholder:入力時に文字が消える機能-->
       </div>
         <div class="col-6">
           <ul class="list-group list-group-horizontal">
