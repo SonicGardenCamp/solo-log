@@ -1,68 +1,74 @@
-<div class="col-md-8">
-  <h1 style="margin: 15px 0;">店名：<%= @shop.name %></h1>
-</div>
+<div class="shop-show">
+  <div class="col-md-8">
+    <h2 style="margin: 15px 0;">店名：<%= @shop.name %></h2>
+  </div>
 
-<div class="col-md-8">
-  <h3 style="margin: 15px 0;">住所：<%= @shop.address %></h3>
-</div>
+  <div class="col-md-8">
+    <p style="margin: 15px 0;">住所：<%= @shop.address %></p>
+  </div>
 
-<div class="col-md-8">
-  <h5 style="margin: 15px 0;">投稿件数： <%= @total_reviews_count %>件</h5>
-</div>
+  <div class="col-md-8">
+    <p style="margin: 15px 0;">投稿件数： <%= @total_reviews_count %>件</p>
+  </div>
 
-<br>
-<%= paginate @reviews %>
-<!--ページ幅に合わせてカードの列数を減少させる-->
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
-  <div class="col">
-    <%= link_to new_shop_review_path(shop_id: @shop.id) do %>
-      <div class="card h-100">
-        <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
-          <h1 class="card-title">＋</h1>
+  <div class="col-md-8">
+    <p style="margin: 15px 0;">ジャンル： <%= genre(@shop.genre) %></p>
+  </div>
+
+  <br>
+  <%= paginate @reviews %>
+  <!--ページ幅に合わせてカードの列数を減少させる-->
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+    <div class="col">
+      <%= link_to new_shop_review_path(shop_id: @shop.id) do %>
+        <div class="card h-100">
+          <div class="card-body text-center d-flex flex-column align-items-center justify-content-center">
+            <h1 class="card-title">＋</h1>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <% @reviews.each do |review| %>
+      <div class="col">
+        <div class="card h-100">
+          <a href="<%= review_path(review) %>">
+            <%= image_tag review.image.url, class: "card-img-top", alt: "", size: "" %>
+          </a>
+          <div class="card-body">
+            <h5 class="card-title">評価：<%= review.rate %></h5>
+            <p class="card-text">コメント：<%= review.comment %></p>
+            <!-- ↓↓↓モーダルのトリガーボタン↓↓↓ -->
+            <% if current_user && current_user.id == review.user_id %>
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="<%= "#review_modal_#{review.id}" %>">
+                削除
+              </button>
+            <% end %>
+            <!-- ↓↓↓編集ボタン & editページへの遷移↓↓↓ -->
+            <% if current_user && current_user.id == review.user_id %>
+              <%= link_to "編集", edit_review_path(review), class: "btn btn-primary" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <!--モーダルの実装-->
+      <div class="modal fade" id="<%= "review_modal_#{review.id}" %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" >削除しますか？</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              ＊削除したら元には戻せません
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+              <%= button_to '削除する', review, method: :delete, class: 'btn btn-danger' %>
+            </div>
+          </div>
         </div>
       </div>
     <% end %>
   </div>
-  <% @reviews.each do |review| %>
-    <div class="col">
-      <div class="card h-100">
-        <a href="<%= review_path(review) %>">
-          <%= image_tag review.image.url, class: "card-img-top", alt: "", size: "" %>
-        </a>
-        <div class="card-body">
-          <h5 class="card-title show-star <%=review.id%>"><%= review.rate %></h5>
-          <p class="card-text">コメント：<%= review.comment %></p>
-          <!-- ↓↓↓モーダルのトリガーボタン↓↓↓ -->
-          <% if current_user && current_user.id == review.user_id %>
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="<%= "#review_modal_#{review.id}" %>">
-              削除
-            </button>
-          <% end %>
-          <!-- ↓↓↓編集ボタン & editページへの遷移↓↓↓ -->
-          <% if current_user && current_user.id == review.user_id %>
-            <%= link_to "編集", edit_review_path(review), class: "btn btn-primary" %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-          <!--モーダルの実装-->
-          <div class="modal fade" id="<%= "review_modal_#{review.id}" %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" >削除しますか？</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  ＊削除したら元には戻せません
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
-                  <%= button_to '削除する', review, method: :delete, class: 'btn btn-danger' %>
-                </div>
-              </div>
-            </div>
-          </div>
-  <% end %>
 </div>
 <br><br>

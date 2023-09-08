@@ -3,7 +3,7 @@
     <div class="col-md-6 offset-md-3">
       <h2 class ="shop-form-title text-center">店舗を登録する</h2>
       
-      <%= form_with(model: @shop, url: admins_shops_path, method: :post) do |f| %>
+      <%= form_with(model: @shop, url: admins_shop_path(@shop), method: :patch) do |f| %>
         <%= render 'layouts/validation_errors', model: @shop %>
         
         <div class="form-group mb-3">
@@ -27,7 +27,7 @@
         </div>
         
         <div class="actions d-grid">
-          <%= f.submit "店舗を登録する", class: "btn btn-warning btn-block" %>
+          <%= f.submit "店舗を更新する", class: "btn btn-warning btn-block" %>
         </div>
       <% end %>
     </div>

@@ -49,7 +49,7 @@
     <div class="col">
       <div class="card h-100">
         <a href="<%= review_path(review) %>">
-          <img src="https://tblg.k-img.com/restaurant/images/Rvw/167047/640x640_rect_ad57e011b05b9d846441a04c43ab61bb.jpg" class="card-img-top" alt="...">
+          <%= image_tag review.image.url, class: "card-img-top", alt: "", size: "" %>
         </a>
         <div class="card-body">
           <h5 class="card-title">評価：<%= review.rate %></h5>
