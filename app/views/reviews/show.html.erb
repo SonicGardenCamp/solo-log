@@ -35,7 +35,7 @@
 
 <div class="review-details">
   <h2 style="margin: 15px 0;">店名：<%= @review.shop.name %></h2>
-  <h3 style="margin: 15px 0;">評価：<%= @review.rate %></h3>
+  <h3 style="margin: 15px 0;" class="show-star <%=@review.id%>"><%= @review.rate %></h3>
   <h6 style="margin: 15px 0;">住所：<%= @review.shop.address %></h4>
   <%= image_tag @review.image.url, alt: "...", size: "400x400", class: "border" %>
 </div>
@@ -120,3 +120,33 @@
     </div>
   <% end %>
   <br><br>
+
+  <div class="form-group">
+    <%= f.label :delivery_speed, "店内の雰囲気は良いかどうか" %>
+    <br>
+    <% for button_num in (1..5) do %>
+      <%= f.radio_button :calmness, button_num, checked: @review.calmness == button_num, readonly: true %>
+      <%= f.label :calmness, value: button_num %>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--　←ボタン間にスペースをつくるための処理-->
+    <% end %>
+  </div>
+  <br>
+<% end %>
+
+<script>
+  window.onload = function onLoad() {
+    let rates = document.querySelectorAll('.show-star');
+    for (let i=0; i<rates.length; i++) {
+      let html = ""
+      for (let j=0; j<rates[i].innerText; j++) {
+        html += "<div class='star d-inline-block'></div>";
+      }
+      // debugger
+      // if (rates[i].innerHTML-j > 0) {
+      //   html += "<div class='half-star'>"
+      //   i += 1;
+      // }
+      rates[i].innerHTML = '評価:' + html;
+    }
+  }
+</script>

@@ -30,7 +30,7 @@
           <%= image_tag review.image.url, class: "card-img-top", alt: "", size: "" %>
         </a>
         <div class="card-body">
-          <h5 class="card-title">評価：<%= review.rate %></h5>
+          <h5 class="card-title show-star <%=review.id%>"><%= review.rate %></h5>
           <p class="card-text">コメント：<%= review.comment %></p>
           <!-- ↓↓↓モーダルのトリガーボタン↓↓↓ -->
           <% if current_user && current_user.id == review.user_id %>
@@ -66,3 +66,20 @@
   <% end %>
 </div>
 <br><br>
+<script>
+  window.onload = function onLoad() {
+    let rates = document.querySelectorAll('.show-star');
+    for (let i=0; i<rates.length; i++) {
+      let html = ""
+      for (let j=0; j<rates[i].innerText; j++) {
+        html += "<div class='star d-inline-block'></div>";
+      }
+      // debugger
+      // if (rates[i].innerHTML-j > 0) {
+      //   html += "<div class='half-star'>"
+      //   i += 1;
+      // }
+      rates[i].innerHTML = '評価:' + html;
+    }
+  }
+</script>
