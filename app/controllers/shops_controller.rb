@@ -6,9 +6,11 @@ class ShopsController < ApplicationController
       @shops = Shop.sort_by_count_of_reviews(@shops)
     elsif params[:sort_order] == 'highest_rating'
       @shops = Shop.sort_by_average_rating(@shops)
+    else
+      @shops = Shop.latest(@shops)
     end
     # kaminariのページネーション
-    @shops = Shop.page(params[:page]).per(20) 
+    # @shops = @shops.page(params[:page]).per(20)
   end
 
   def show
