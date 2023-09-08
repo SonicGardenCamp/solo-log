@@ -78,75 +78,47 @@
 
     <div class="form-group">
       <%= f.label :frequent_solo_visitors, "ひとり客の利用が多いかどうか" %>
-      <br>
-      <% for button_num in (1..5) do %>
-        <%= f.radio_button :frequent_solo_visitors, button_num, checked: @review.frequent_solo_visitors == button_num, readonly: true%>
-        <%= f.label :frequent_solo_visitors, value: button_num %>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--　←ボタン間にスペースをつくるための処理-->
-      <% end %>
+      <h3 style="margin: 15px 0;" class="show-star <%=@review.id%>"><%= @review.frequent_solo_visitors %></h3>
     </div>
     <br>
 
     <div class="form-group">
       <%= f.label :frequent_solo_visitors, "注文がしやすいかどうか" %>
-      <br>
-      <% for button_num in (1..5) do %>
-        <%= f.radio_button :easy_to_order, button_num, checked: @review.easy_to_order == button_num, readonly: true %>
-        <%= f.label :easy_to_order, value: button_num %>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--　←ボタン間にスペースをつくるための処理-->
-      <% end %>
+      <h3 style="margin: 15px 0;" class="show-star <%=@review.id%>"><%= @review.easy_to_order %></h3>
     </div>
     <br>
 
     <div class="form-group">
       <%= f.label :delivery_speed, "商品の提供スピードは速いかどうか" %>
-      <br>
-      <% for button_num in (1..5) do %>
-        <%= f.radio_button :delivery_speed, button_num, checked: @review.delivery_speed == button_num, readonly: true %>
-        <%= f.label :delivery_speed, value: button_num %>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--　←ボタン間にスペースをつくるための処理-->
-      <% end %>
+      <h3 style="margin: 15px 0;" class="show-star <%=@review.id%>"><%= @review.delivery_speed %></h3>
     </div>
     <br>
 
     <div class="form-group">
-      <%= f.label :delivery_speed, "店内の雰囲気は良いかどうか" %>
-      <br>
-      <% for button_num in (1..5) do %>
-        <%= f.radio_button :calmness, button_num, checked: @review.calmness == button_num, readonly: true %>
-        <%= f.label :calmness, value: button_num %>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--　←ボタン間にスペースをつくるための処理-->
-      <% end %>
+      <%= f.label :delivery_speed, "店内が落ち着いているか" %>
+      <h3 style="margin: 15px 0;" class="show-star <%=@review.id%>"><%= @review.calmness %></h3>
     </div>
   <br><br>
 
-  <div class="form-group">
-    <%= f.label :delivery_speed, "店内の雰囲気は良いかどうか" %>
-    <br>
-    <% for button_num in (1..5) do %>
-      <%= f.radio_button :calmness, button_num, checked: @review.calmness == button_num, readonly: true %>
-      <%= f.label :calmness, value: button_num %>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <!--　←ボタン間にスペースをつくるための処理-->
-    <% end %>
-  </div>
   <br>
 <% end %>
 
 
 <script>
   window.onload = function onLoad() {
+    let html = ''
     let rates = document.querySelectorAll('.show-star');
     for (let i=0; i<rates.length; i++) {
       let html = ""
-      for (let j=0; j<rates[i].innerText; j++) {
+      let j=0;
+      for (; j<rates[i].innerText; j++) {
         html += "<div class='star d-inline-block'></div>";
       }
       // debugger
-      // if (rates[i].innerHTML-j > 0) {
-      //   html += "<div class='half-star'>"
-      //   i += 1;
-      // }
-      rates[i].innerHTML = '評価:' + html;
+      if (rates[i].innerHTML-j > 0) {
+        html += "<div class='fa-solid fa-star-half-stroke'></div>"
+      }
+      rates[i].innerHTML = html;
     }
   }
 </script>

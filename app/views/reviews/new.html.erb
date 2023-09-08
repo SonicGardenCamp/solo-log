@@ -12,7 +12,7 @@
               <%= f.label :rate, "このお店に星をつける", class: "form-label" %>
             </div>
             <% (1..5).each do |rate| %>
-              <div class="form-check form-check-inline">
+              <div class="form-check form-check-inline star-rate", onclick= "starRate(event)">
                 <%= f.radio_button :rate, rate %>
                 <%= f.label :rate, rate, class: "form-check-label" %>
               </div>
@@ -60,7 +60,7 @@
           <div class="form-group mb-4">
             <div><%= f.label :frequent_solo_visitors, "一人客が多いか", class: "form-label" %></div>
             <% (1..5).each do |frequent_solo_visitors| %>
-              <div class="form-check form-check-inline">
+              <div class="form-check form-check-inline star-rate", onclick= "starRate(event)">
                 <%= f.radio_button :frequent_solo_visitors, frequent_solo_visitors %>
                 <%= f.label :frequent_solo_visitors, frequent_solo_visitors, class: "form-check-label" %>
               </div>
@@ -70,7 +70,7 @@
           <div class="form-group mb-4">
             <div><%= f.label :easy_to_order, "注文しやすいか", class: "form-label" %></div>
             <% (1..5).each do |easy_to_order| %>
-              <div class="form-check form-check-inline">
+              <div class="form-check form-check-inline star-rate", onclick= "starRate(event)">
                 <%= f.radio_button :easy_to_order, easy_to_order %>
                 <%= f.label :easy_to_order, easy_to_order, class: "form-check-label" %>
               </div>
@@ -80,7 +80,7 @@
           <div class="form-group mb-4">
             <div><%= f.label :delivery_speed, "料理の提供スピードが早いか", class: "form-label" %></div>
             <% (1..5).each do |delivery_speed| %>
-              <div class="form-check form-check-inline">
+              <div class="form-check form-check-inline star-rate", onclick= "starRate(event)">
                 <%= f.radio_button :delivery_speed, delivery_speed %>
                 <%= f.label :delivery_speed, delivery_speed, class: "form-check-label" %>
               </div>
@@ -90,7 +90,7 @@
           <div class="form-group mb-4">
             <div><%= f.label :calmness, "店内が落ち着いているか", class: "form-label" %></div>
             <% (1..5).each do |calmness| %>
-              <div class="form-check form-check-inline">
+              <div class="form-check form-check-inline star-rate", onclick= "starRate(event)">
                 <%= f.radio_button :calmness, calmness %>
                 <%= f.label :calmness, calmness, class: "form-check-label" %>
               </div>

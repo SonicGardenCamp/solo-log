@@ -43,7 +43,7 @@
           <%= image_tag shop.image.url, class: "card-img-top", alt: "", size: "" %>
           <div class="card-body">
             <h5 style="margin: 15px 0;" class="card-title">店名：<%= shop.name %></h5>
-            <h5 style="margin: 15px 0;" class="card-title">平均評価：<%= shop.reviews.average(:rate) %></h5>
+            <h5 style="margin: 15px 0;" class="card-title show-star <%= shop.id %>"><%= shop.reviews.average(:rate) %></h5>
             <p style="margin: 15px 0;" class="card-text">住所：<%= shop.address %></p>
           </div>
         </div>
