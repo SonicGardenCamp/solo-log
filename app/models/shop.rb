@@ -26,7 +26,7 @@ class Shop < ApplicationRecord
   end
 
   def self.sort_by_average_rating(shops)
-    Review.where(shop_id: shops.ids).group(:shop_id).includes(:shop).select(:shop_id, 'avg(rate) as avg').order(avg: :asc).map{|review| review.shop}
+    Review.where(shop_id: shops.ids).group(:shop_id).includes(:shop).select(:shop_id, 'avg(rate) as avg').order(avg: :desc).map{|review| review.shop}
   end
 
   def update_lat_and_long
