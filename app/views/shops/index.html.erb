@@ -1,11 +1,11 @@
-<h1 style="margin: 15px 0;">All shops</h1>
+<h1 class="text-center" style="margin: 40px 0;">飲食店一覧</h1>
 
   <h2 class="search-shop">検索条件</h2>
   
   <%= form_with model: @q, url: shops_path, method: :get do |f| %>
     <div class="row mb-5">
       <div class="col-4">
-        <%= f.search_field :name_cont %>
+        <%= f.search_field :name_cont, placeholder: "店名、キーワドを検索" %>
       </div>
         <div class="col-6">
           <ul class="list-group list-group-horizontal">
