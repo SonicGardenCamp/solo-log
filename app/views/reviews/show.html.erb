@@ -1,0 +1,105 @@
+<% if user_signed_in? && @review.user.present? && current_user != @review.user %>
+  <div class="card" style="width: 25rem; height: 5rem;" onclick="handleCardClick(event, '<%= user_path(@review.user) %>')">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="flex-grow-1">
+          <%= turbo_frame_tag "user_name", class: "user-name-in-review" do %>
+            <%= link_to @review.user.name, user_path(@review.user), style: "text-decoration: none; color: black; white-space: nowrap;" %>
+          <% end %>
+        </div>
+        <div>
+          <%= turbo_frame_tag "follow_button", class: (current_user.following?(@review.user) ? "unfollow-btn" : "follow-btn") do %>
+            <% if current_user.following?(@review.user) %>
+              <%= render 'relationships/unfollow', locals: { user: @review.user } %>
+            <% else %>
+              <%= render 'relationships/follow', locals: { user: @review.user } %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<script>
+  function handleCardClick(event, url) {
+    // イベントの伝播を止める
+    event.stopPropagation();
+
+    // クリックした要素がフォローボタンやその子要素でなければリダイレクト
+    if (!event.target.closest('.follow-btn') && !event.target.closest('.unfollow-btn')) {
+      window.location.href = url;
+    }
+  }
+</script>
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <div class="review-show-content">
+      <h2><%= @review.shop.name %></h2>
+      <p class="show-star <%=@review.id%>"><%= @review.rate%></p>
+      <p>住所: <%= @review.shop.address %></p>
+      <div class="review-show-image">
+        <%= image_tag @review.image.url, class: "border" %>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-labl">コメント</label>
+        <textarea class="form-control" id="reviewComment" rows="4" readonly><%= @review.comment %></textarea>
+      </div>
+
+      <%= form_with(model: @review, method: :GET, url: review_path(@review)) do |f| %>
+      <div class="form-group">
+        <%= f.label :counter_sheets_available, "カウンター席があるかどうか" %>
+        <br>
+        <div class="form-check form-check-inline">
+          <%= f.radio_button :counter_sheets_available, 1, @review.counter_sheets_available == true ? { checked: true, readonly: true } : { readonly: true }%>
+          <%= f.label :counter_sheets_available, 'ある', value: 1, class: "form-check-label" %>
+        </div>
+        <div class="form-check form-check-inline">
+          <%= f.radio_button :counter_sheets_available, 0, @review.counter_sheets_available == false ? { checked: true, readonly: true } : { readonly: true }%>
+          <%= f.label :counter_sheets_available, 'なし', value: 0, class: "form-check-label" %>
+        </div>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <%= f.label :solo_tables_available, "ひとり用のテーブル席があるかどうか" %>
+        <br>
+        <div class="form-check form-check-inline">
+          <%= f.radio_button :solo_tables_available, 1, @review.solo_tables_available == true ? { checked: true, readonly: true } : { readonly: true }%>
+          <%= f.label :solo_tables_available, 'ある', value: 1, class: "form-check-label" %>
+        </div>
+        <div class="form-check form-check-inline">
+          <%= f.radio_button :solo_tables_available, 0, @review.solo_tables_available == false ? { checked: true, readonly: true } : { readonly: true }%>
+          <%= f.label :solo_tables_available, 'なし', value: 0, class: "form-check-label" %>
+        </div>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <%= f.label :frequent_solo_visitors, "ひとり客の利用が多いかどうか" %>
+        <h3 style="margin: 15px 0;" class="show-star <%=@review.id%>"><%= @review.frequent_solo_visitors %></h3>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <%= f.label :frequent_solo_visitors, "注文がしやすいかどうか" %>
+        <h3 style="margin: 15px 0;" class="show-star <%=@review.id%>"><%= @review.easy_to_order %></h3>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <%= f.label :delivery_speed, "商品の提供スピードは速いかどうか" %>
+        <h3 style="margin: 15px 0;" class="show-star <%=@review.id%>"><%= @review.delivery_speed %></h3>
+      </div>
+      <br>
+
+      <div class="form-group">
+        <%= f.label :delivery_speed, "店内の雰囲気は良いかどうか" %>
+        <h3 style="margin: 15px 0;" class="show-star <%=@review.id%>"><%= @review.calmness %></h3>
+      </div>
+    </div>
+  </div>
+      <% end %>
+</div>

@@ -1,0 +1,12 @@
+<% if @review.present? %>
+  <%= form_with(url: relationship_path(current_user.active_relationships.find_by(followed_id: @review.user.id)), method: :delete, remote: true) do |form| %>
+    <%= form.hidden_field :review_id, value: @review.id %> 
+    <%= form.submit "フォロー中", class: "unfollow-submit-button" %>
+  <% end %>
+<% elsif @user.present? %>
+  <%= form_with(url: relationship_path(current_user.active_relationships.find_by(followed_id: @user.id)), method: :delete, remote: true) do |form| %>
+    <%= form.hidden_field :userid, value: @user.id %> 
+    <%= form.submit "フォロー中", class: "unfollow-submit-button" %>
+  <% end %>
+<% end %>
+

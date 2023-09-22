@@ -1,0 +1,9 @@
+<%= form_with(url: relationships_path, remote: true) do |form| %>
+  <% if @review.present? %>
+    <%= form.hidden_field :followed_id, value: @review.user.id %>
+    <%= form.hidden_field :review_id, value: @review.id %>
+  <% elsif @user.present? %>
+    <%= form.hidden_field :followed_id, value: @user.id %>
+  <% end %>
+  <%= form.submit "フォロー", class: "follow-submit-button" %>
+<% end %>

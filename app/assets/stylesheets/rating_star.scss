@@ -1,0 +1,35 @@
+.star-rate > input {
+  display: none;
+}
+
+.star-rate > label {
+  position: relative;
+  display: inline;
+  width: 20px;
+}
+
+.star-rate > label:before {
+  position: absolute;
+  content:'\2605';
+  font-size: 30px;
+  color: gray
+}
+
+.star-rate {
+  &.checked-star label:before {
+    color: yellow;
+  }
+}
+
+.star {
+  &:before {
+    content: '\2605';
+    color: #d8d847;
+    font-size: 15px;
+  }
+}
+
+.fa-regular {
+  font-size: 14px;
+  color: #d8d847;
+}

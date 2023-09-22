@@ -7,9 +7,78 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" %>
+    <%= javascript_importmap_tags %>
+    <%= include_gon %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+    <div class="container">
+      <%= render 'layouts/flashes' %>
+      <%= yield %>
+    </div>
+    <%= render 'layouts/footer' %>
   </body>
+
+  <script>
+    // 五段階評価のラベルの数字を全て削除
+    const allStarElements = document.querySelectorAll('.star-rate');
+    for (let i=0; i<allStarElements.length; i++) {
+      allStarElements[i].lastElementChild.innerHTML = '';
+    }
+
+
+    function starRate(event) {
+      const starElement = event.target.parentElement;
+      const starElements = starElement.parentElement.getElementsByClassName('star-rate');
+      starElement.firstElementChild.checked = true;
+      uncheckAllStars(starElements);
+      checkOrLessSelected(starElements, starElement);
+      starElement.classList.add('checked-star')
+    }
+
+    function uncheckAllStars(starElements) {
+      for (let i=0; i<starElements.length; i++) {
+        starElements[i].classList.remove('checked-star');
+      }
+    }
+
+    function checkOrLessSelected(starElements, starElement) {
+      let indexSelectedStar = 0;
+      for (let i=0; i<starElements.length; i++) {
+        if (starElements[i] === starElement) {
+          indexSelectedStar = i;
+          break;
+        }
+      }
+      for (let i=0; i<indexSelectedStar; i++) {
+        starElements[i].classList.add('checked-star');
+      }
+    }
+
+    window.onload = function onLoad() {
+      let rates = document.querySelectorAll('.show-star');
+      for (let i=0; i<rates.length; i++) {
+        let html = ""
+        let j=0;
+        for (; j<Math.floor(rates[i].innerText); j++) {
+          html += "<div class='star d-inline-block'></div>";
+        }
+        // debugger
+        if (rates[i].innerHTML-j > 0) {
+          html += "<div class='fa-regular fa-star-half-stroke'></div>"
+          j++
+        }
+
+        for (;j<5; j++) {
+          html += "<div class='fa-regular fa-star'></div>";
+        }
+
+        rates[i].innerHTML = html;
+      }
+    }
+
+  </script>
+
 </html>

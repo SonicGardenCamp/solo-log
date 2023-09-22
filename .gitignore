@@ -31,5 +31,13 @@
 
 /public/assets
 
+/public/uploads
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/.idea/.gitignore
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/solo-log.iml
+/.idea/vcs.xml
+/.env
